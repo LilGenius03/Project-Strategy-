@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public DefenseGrid defenseGrid;
     public grid_space current_grid_space;
     public AttackSpawn attack_spawn;
+    public GameObject temp_attackingdude;
 
     private void Awake()
     {
@@ -29,7 +30,10 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        currentState = state_attack;
+        if(id == 1)
+            currentState = state_defend;
+        else
+            currentState = state_attack;
         currentState.EnterState(this);
     }
 
@@ -56,5 +60,13 @@ public class PlayerController : MonoBehaviour
     private void OnDrawGizmos()
     {
         currentState.DrawGizmos(this);
+    }
+
+    public void HelpInstantiate(GameObject object2Instantiate, Vector3 position, Quaternion rotation, Transform parent = null)
+    {
+        if (parent != null)
+            Instantiate(object2Instantiate, position, rotation, parent);
+        else
+            Instantiate(object2Instantiate, position, rotation);
     }
 }

@@ -56,7 +56,8 @@ public class PlayerState_Attack : PlayerState_Base
 
     public override void OnButtonSouth(PlayerController controller, InputAction.CallbackContext ctx)
     {
-        
+        if(ctx.performed)
+            controller.HelpInstantiate(controller.temp_attackingdude, controller.attack_spawn.spawnPositions[currentSpawnPosition].position, Quaternion.identity);
     }
 
     public override void DrawGizmos(PlayerController controller)

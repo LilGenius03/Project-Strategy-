@@ -122,8 +122,6 @@ MonoBehaviour:
   id: 0
   playerState: 0
   defenseGrid: {fileID: 0}
-  current_grid_space:
-    position: {x: 0, y: 0}
-    type_of_space: 0
-    current_tower: {fileID: 0}
+  current_grid_space: {fileID: 0}
   attack_spawn: {fileID: 0}
+  temp_attackingdude: {fileID: 4234291790501660461, guid: b79da94aa91b8f74583ee2bb105a5d77, type: 3}
