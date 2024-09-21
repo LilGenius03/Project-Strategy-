@@ -18,7 +18,8 @@ public class PlayerController : MonoBehaviour
     public PlayerState_Defend state_defend = new PlayerState_Defend();
     public PlayerState_Attack state_attack = new PlayerState_Attack();
 
-    public Grid defenseGrid;
+    public DefenseGrid defenseGrid;
+    public grid_space current_grid_space;
     public AttackSpawn attack_spawn;
 
     private void Awake()
@@ -28,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        currentState = state_attack;
+        currentState = state_defend;
         currentState.EnterState(this);
     }
 
@@ -45,5 +46,15 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext ctx)
     {
         currentState.OnMove(this, ctx);
+    }
+
+    public void OnButtonSouth(InputAction.CallbackContext ctx)
+    {
+        currentState.OnButtonSouth(this, ctx);
+    }
+
+    private void OnDrawGizmos()
+    {
+        currentState.DrawGizmos(this);
     }
 }

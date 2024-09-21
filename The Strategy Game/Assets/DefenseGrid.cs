@@ -1,19 +1,41 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grid : MonoBehaviour
+public class DefenseGrid : MonoBehaviour
 {
     public int index;
     public PlayerController player_owner;
 
-    public Dictionary<Vector2, grid_space> spaise = new Dictionary<Vector2, grid_space>();
     public List<grid_space> gridSpaces = new List<grid_space>();
 
-    Vector2 prev_player_pos;
+    [HideInInspector] public float grid_size;
+
+    [SerializeField] private GameObject debug_tower;
 
     private void Awake()
     {
         //player_owner = PlayerManager.instance.players[index].GetComponent<PlayerController>();
+        grid_size = Mathf.Sqrt(gridSpaces.Count);
+    }
+
+    public grid_space FindSpace(Vector2 pos)
+    {
+        foreach (grid_space space in gridSpaces)
+        {
+            if (space.position == pos)
+                return space;
+        }
+        return null;
+    }
+
+    public void PlaceTower(grid_space space)
+    {
+        if(space.type_of_space == 1 && space.current_tower == null)
+        {
+            GameObject newTower = Instantiate(debug_tower, transform.position + new Vector3(space.position.x, 0f, space.position.y), Quaternion.identity, transform);
+            space.current_tower = newTower.GetComponent<Tower>();
+        }
     }
 
     private void OnDrawGizmos()
@@ -35,13 +57,7 @@ public class Grid : MonoBehaviour
             Vector3 grid_poses = transform.position + new Vector3(space.position.x, 0f, space.position.y);
             Gizmos.DrawCube(grid_poses, new Vector3(1f, 0.0001f, 1f));
         }
-    }
-
-    public grid_space FindSpace(Vector2 pos)
-    {
-        return null;
-    }
-
+    } 
 }
 
 [System.Serializable]

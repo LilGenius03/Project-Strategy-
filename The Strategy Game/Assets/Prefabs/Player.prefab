@@ -74,6 +74,34 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 612c1af1-0c21-405b-be50-b41d4840889f
     m_ActionName: 'Gameplay/Move[/DualShock4GamepadHID/leftStick,/DualShock4GamepadHID/dpad]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3571297086972461357}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnButtonSouth
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: aee9c109-cf65-4913-a37e-fbe73070e802
+    m_ActionName: 'Gameplay/SouthButton[/DualShock4GamepadHID/buttonSouth]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5f1a4d6b-83c1-460b-9d01-2a459124d806
+    m_ActionName: 'Gameplay/WestButton[/DualShock4GamepadHID/buttonWest]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 259162a5-92a7-484f-b507-61f60e6caadb
+    m_ActionName: 'Gameplay/NorthButton[/DualShock4GamepadHID/buttonNorth]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f00695f4-b4b2-4b39-9234-e0e1e9625645
+    m_ActionName: 'Gameplay/EastButton[/DualShock4GamepadHID/buttonEast]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gameplay
   m_DefaultActionMap: Gameplay
@@ -94,4 +122,8 @@ MonoBehaviour:
   id: 0
   playerState: 0
   defenseGrid: {fileID: 0}
+  current_grid_space:
+    position: {x: 0, y: 0}
+    type_of_space: 0
+    current_tower: {fileID: 0}
   attack_spawn: {fileID: 0}

@@ -41,4 +41,9 @@ public abstract class PlayerState_Base
 
     }
 
+    public virtual void DrawGizmos(PlayerController controller)
+    {
+
+    }
+
 }

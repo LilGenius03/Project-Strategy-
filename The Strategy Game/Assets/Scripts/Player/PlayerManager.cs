@@ -8,7 +8,7 @@ public class PlayerManager : MonoBehaviour
     public static event PlayerHasJoined OnPlayerHasJoined;
 
     public List<PlayerInput> players = new List<PlayerInput>();
-    public Grid[] player_grids;
+    public DefenseGrid[] player_grids;
     public AttackSpawn[] player_attack_spawns;
 
 
