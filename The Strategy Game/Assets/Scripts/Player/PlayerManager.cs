@@ -8,7 +8,6 @@ public class PlayerManager : MonoBehaviour
     public static event PlayerHasJoined OnPlayerHasJoined;
 
     public List<PlayerInput> players = new List<PlayerInput>();
-    public GameObject[] playerObjects;
 
     private PlayerInputManager playerInputManager;
 
@@ -51,7 +50,7 @@ public class PlayerManager : MonoBehaviour
         player.transform.parent = transform;
 
         players.Add(player);
-        player.name = "Player" + players.Count;
+        player.name = "Player_" + players.Count;
 
         PlayerController controller = player.GetComponent<PlayerController>();
         controller.id = (short) players.Count;
@@ -71,6 +70,6 @@ public class PlayerManager : MonoBehaviour
 
     public void PlayerJoined(int id)
     {
-        Debug.Log("Player " + id + "has joined");
+        Debug.Log("Player " + id + " has joined");
     }
 }
