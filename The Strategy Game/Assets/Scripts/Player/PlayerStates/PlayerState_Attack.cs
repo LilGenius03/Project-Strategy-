@@ -11,7 +11,7 @@ public class PlayerState_Attack : PlayerState_Base
 
     public override void EnterState(PlayerController controller)
     {
-
+        controller.defendHelper.SetActive(false);
     }
 
     public override void ExitState(PlayerController controller)

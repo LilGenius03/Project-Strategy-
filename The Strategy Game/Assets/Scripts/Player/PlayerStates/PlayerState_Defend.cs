@@ -62,7 +62,7 @@ public class PlayerState_Defend : PlayerState_Base
 
             currentPosition = controller.current_grid_space.transform.localPosition;
 
-            //Debug.Log(input_vector);
+            controller.defendHelper.transform.position = new Vector3(currentPosition.x + 0.5f, 2.5f, currentPosition.z + 0.5f);
         }
     }
 
@@ -71,11 +71,4 @@ public class PlayerState_Defend : PlayerState_Base
         if(ctx.performed)
             controller.defenseGrid.PlaceTower(controller.current_grid_space);
     }
-
-    public override void DrawGizmos(PlayerController controller)
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawCube(new Vector3(currentPosition.x, 2.5f, currentPosition.z), new Vector3(0.1f, 5f, 0.1f));
-    }
-
 }

@@ -18,8 +18,12 @@ public class PlayerController : MonoBehaviour
     public PlayerState_Defend state_defend = new PlayerState_Defend();
     public PlayerState_Attack state_attack = new PlayerState_Attack();
 
+    //defend
     public DefenseGrid defenseGrid;
     public grid_space current_grid_space;
+    public GameObject defendHelper;
+
+    //attack
     public AttackSpawn attack_spawn;
     public GameObject temp_attackingdude;
 
@@ -59,7 +63,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        currentState.DrawGizmos(this);
+        //currentState.DrawGizmos(this);
     }
 
     public void HelpInstantiate(GameObject object2Instantiate, Vector3 position, Quaternion rotation, Transform parent = null)
