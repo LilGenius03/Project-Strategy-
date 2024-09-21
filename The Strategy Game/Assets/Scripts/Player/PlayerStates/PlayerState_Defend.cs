@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerState_Defend : PlayerState_Base
 {
-    public Vector2 currentPosition;
+    public Vector3 currentPosition;
 
     public override void EnterState(PlayerController controller)
     {
@@ -33,8 +33,8 @@ public class PlayerState_Defend : PlayerState_Base
             if(input_vector.x > 0.5f)
             {
                 currentPosition.x += Mathf.Ceil(input_vector.x);
-                if (currentPosition.x >= controller.defenseGrid.grid_size)
-                    currentPosition.x = controller.defenseGrid.grid_size - 1;
+                if (currentPosition.x >= controller.defenseGrid.playable_space_x)
+                    currentPosition.x = controller.defenseGrid.playable_space_x - 1;
             }
             else if (input_vector.x < -0.5f)
             {
@@ -45,25 +45,23 @@ public class PlayerState_Defend : PlayerState_Base
                 
             if (input_vector.y > 0.5f)
             {
-                currentPosition.y += Mathf.Ceil(input_vector.y);
-                if (currentPosition.y >= controller.defenseGrid.grid_size)
-                    currentPosition.y = controller.defenseGrid.grid_size - 1;
+                currentPosition.z += Mathf.Ceil(input_vector.y);
+                if (currentPosition.z >= controller.defenseGrid.playable_space_y)
+                    currentPosition.z = controller.defenseGrid.playable_space_y - 1;
             }               
             else if (input_vector.y < -0.5f)
             {
-                currentPosition.y += Mathf.Floor(input_vector.y);
-                if (currentPosition.y <= 0)
-                    currentPosition.y = 0;
+                currentPosition.z += Mathf.Floor(input_vector.y);
+                if (currentPosition.z <= 0)
+                    currentPosition.z = 0;
             }
-                
 
-
+            Debug.Log(currentPosition);
 
             controller.current_grid_space = controller.defenseGrid.FindSpace(currentPosition);
 
-            currentPosition = controller.current_grid_space.position;
+            currentPosition = controller.current_grid_space.transform.localPosition;
 
-            //Debug.Log(currentPosition);
             //Debug.Log(input_vector);
         }
     }
@@ -77,7 +75,7 @@ public class PlayerState_Defend : PlayerState_Base
     public override void DrawGizmos(PlayerController controller)
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawCube(new Vector3(currentPosition.x, 2.5f, currentPosition.y), new Vector3(0.1f, 5f, 0.1f));
+        Gizmos.DrawCube(new Vector3(currentPosition.x, 2.5f, currentPosition.z), new Vector3(0.1f, 5f, 0.1f));
     }
 
 }

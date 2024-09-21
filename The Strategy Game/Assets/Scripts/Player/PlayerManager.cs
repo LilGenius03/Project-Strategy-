@@ -11,9 +11,6 @@ public class PlayerManager : MonoBehaviour
     public DefenseGrid[] player_grids;
     public AttackSpawn[] player_attack_spawns;
 
-
-    public Transform debugCube;
-
     private PlayerInputManager playerInputManager;
 
     public static PlayerManager instance;

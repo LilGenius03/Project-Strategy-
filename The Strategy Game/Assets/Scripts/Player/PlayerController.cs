@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        currentState = state_defend;
+        currentState = state_attack;
         currentState.EnterState(this);
     }
 

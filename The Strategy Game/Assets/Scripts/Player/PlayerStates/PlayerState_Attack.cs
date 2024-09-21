@@ -29,6 +29,7 @@ public class PlayerState_Attack : PlayerState_Base
 
     }
 
+
     public override void OnMove(PlayerController controller, InputAction.CallbackContext ctx)
     {
         if (ctx.performed && !isMoving && (ctx.ReadValue<Vector2>().x > 0.5 || ctx.ReadValue<Vector2>().x < -0.5))
@@ -47,7 +48,6 @@ public class PlayerState_Attack : PlayerState_Base
             if (currentSpawnPosition < 0)
                 currentSpawnPosition = controller.attack_spawn.spawnPositions.Length - 1;
             Debug.Log(currentSpawnPosition);
-            PlayerManager.instance.debugCube.position = controller.attack_spawn.spawnPositions[currentSpawnPosition].position;
         }
 
         if (ctx.canceled)
@@ -57,5 +57,11 @@ public class PlayerState_Attack : PlayerState_Base
     public override void OnButtonSouth(PlayerController controller, InputAction.CallbackContext ctx)
     {
         
+    }
+
+    public override void DrawGizmos(PlayerController controller)
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawCube(new Vector3(controller.attack_spawn.spawnPositions[currentSpawnPosition].position.x, 2.5f, controller.attack_spawn.spawnPositions[currentSpawnPosition].position.z), new Vector3(0.1f, 5f, 0.1f));
     }
 }

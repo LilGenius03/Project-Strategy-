@@ -9,21 +9,20 @@ public class DefenseGrid : MonoBehaviour
 
     public List<grid_space> gridSpaces = new List<grid_space>();
 
-    [HideInInspector] public float grid_size;
+    public float playable_space_x, playable_space_y;
 
     [SerializeField] private GameObject debug_tower;
 
     private void Awake()
     {
         //player_owner = PlayerManager.instance.players[index].GetComponent<PlayerController>();
-        grid_size = Mathf.Sqrt(gridSpaces.Count);
     }
 
-    public grid_space FindSpace(Vector2 pos)
+    public grid_space FindSpace(Vector3 pos)
     {
         foreach (grid_space space in gridSpaces)
         {
-            if (space.position == pos)
+            if (space.transform.localPosition == pos)
                 return space;
         }
         return null;
@@ -33,12 +32,12 @@ public class DefenseGrid : MonoBehaviour
     {
         if(space.type_of_space == 1 && space.current_tower == null)
         {
-            GameObject newTower = Instantiate(debug_tower, transform.position + new Vector3(space.position.x, 0f, space.position.y), Quaternion.identity, transform);
+            GameObject newTower = Instantiate(debug_tower, space.transform.position, Quaternion.identity, transform);
             space.current_tower = newTower.GetComponent<Tower>();
         }
     }
 
-    private void OnDrawGizmos()
+/*    private void OnDrawGizmos()
     {
         foreach (grid_space space in gridSpaces)
         {
@@ -57,13 +56,5 @@ public class DefenseGrid : MonoBehaviour
             Vector3 grid_poses = transform.position + new Vector3(space.position.x, 0f, space.position.y);
             Gizmos.DrawCube(grid_poses, new Vector3(1f, 0.0001f, 1f));
         }
-    } 
-}
-
-[System.Serializable]
-public class grid_space
-{
-    public Vector2 position;
-    public int type_of_space = 0; // 0 - non-playable, 1 - Tower, 2 - Obstacle
-    public Tower current_tower;
+    } */
 }
