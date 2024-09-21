@@ -13,6 +13,12 @@ public class PlayerManager : MonoBehaviour
 
     private PlayerInputManager playerInputManager;
 
+    /// <summary>
+    /// TEMP
+    /// </summary>
+    public GameObject castle;
+
+
     public static PlayerManager instance;
     private void Awake()
     {
