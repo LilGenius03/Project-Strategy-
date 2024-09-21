@@ -3,11 +3,17 @@ using UnityEngine;
 
 public class Grid : MonoBehaviour
 {
+    public int index;
+    public PlayerController player_owner;
+
+    public Dictionary<Vector2, grid_space> spaise = new Dictionary<Vector2, grid_space>();
     public List<grid_space> gridSpaces = new List<grid_space>();
+
+    Vector2 prev_player_pos;
 
     private void Awake()
     {
-
+        //player_owner = PlayerManager.instance.players[index].GetComponent<PlayerController>();
     }
 
     private void OnDrawGizmos()
@@ -31,6 +37,11 @@ public class Grid : MonoBehaviour
         }
     }
 
+    public grid_space FindSpace(Vector2 pos)
+    {
+        return null;
+    }
+
 }
 
 [System.Serializable]
@@ -38,4 +49,5 @@ public class grid_space
 {
     public Vector2 position;
     public int type_of_space = 0; // 0 - non-playable, 1 - Tower, 2 - Obstacle
+    public Tower current_tower;
 }

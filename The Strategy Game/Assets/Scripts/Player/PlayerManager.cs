@@ -8,6 +8,11 @@ public class PlayerManager : MonoBehaviour
     public static event PlayerHasJoined OnPlayerHasJoined;
 
     public List<PlayerInput> players = new List<PlayerInput>();
+    public Grid[] player_grids;
+    public AttackSpawn[] player_attack_spawns;
+
+
+    public Transform debugCube;
 
     private PlayerInputManager playerInputManager;
 
@@ -54,7 +59,8 @@ public class PlayerManager : MonoBehaviour
 
         PlayerController controller = player.GetComponent<PlayerController>();
         controller.id = (short) players.Count;
-
+        controller.defenseGrid = player_grids[players.Count - 1];
+        controller.attack_spawn = player_attack_spawns[players.Count - 1];
         OnPlayerHasJoined.Invoke(players.Count);
     }
 

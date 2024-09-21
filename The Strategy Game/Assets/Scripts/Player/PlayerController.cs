@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     public PlayerState_Defend state_defend = new PlayerState_Defend();
     public PlayerState_Attack state_attack = new PlayerState_Attack();
 
+    public Grid defenseGrid;
+    public AttackSpawn attack_spawn;
 
     private void Awake()
     {
@@ -26,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        currentState = state_menu;
+        currentState = state_attack;
         currentState.EnterState(this);
     }
 

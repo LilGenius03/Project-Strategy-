@@ -20,4 +20,25 @@ public abstract class PlayerState_Base
     {
 
     }
+
+    public virtual void OnButtonSouth(PlayerController controller, InputAction.CallbackContext ctx)
+    {
+
+    }
+
+    public virtual void OnButtonWest(PlayerController controller, InputAction.CallbackContext ctx)
+    {
+
+    }
+
+    public virtual void OnButtonNorth(PlayerController controller, InputAction.CallbackContext ctx)
+    {
+
+    }
+
+    public virtual void OnButtonEast(PlayerController controller, InputAction.CallbackContext ctx)
+    {
+
+    }
+
 }
