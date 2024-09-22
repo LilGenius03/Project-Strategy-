@@ -258,6 +258,10 @@ MonoBehaviour:
   target: {fileID: 0}
   current_target: {fileID: 0}
   castle: {fileID: 0}
+  damage: 1
+  rate_of_fire: 2
+  fire_delay: 0
+  attack_range: 3
 --- !u!114 &-5534224696020683872
 MonoBehaviour:
   m_ObjectHideFlags: 0
