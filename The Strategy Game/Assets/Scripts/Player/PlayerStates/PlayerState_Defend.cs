@@ -8,7 +8,10 @@ public class PlayerState_Defend : PlayerState_Base
 
     public override void EnterState(PlayerController controller)
     {
+        controller.current_grid_space = controller.defenseGrid.FindSpace(currentPosition);
 
+        currentPosition = controller.current_grid_space.transform.localPosition;
+        controller.defendHelper.transform.position = new Vector3(currentPosition.x + 0.5f, 2.5f, currentPosition.z + 0.5f);
     }
 
     public override void ExitState(PlayerController controller)
@@ -61,9 +64,13 @@ public class PlayerState_Defend : PlayerState_Base
 
             controller.current_grid_space = controller.defenseGrid.FindSpace(currentPosition);
 
-            currentPosition = controller.current_grid_space.transform.localPosition;
+            if(controller.current_grid_space != null)
+            {
+                currentPosition = controller.current_grid_space.transform.localPosition;
 
-            EvaluateGridSpace(controller); //TEMP
+                            EvaluateGridSpace(controller); //TEMP
+            }
+            
 
             controller.defendHelper.transform.position = new Vector3(currentPosition.x + 0.5f, 2.5f, currentPosition.z + 0.5f);
         }
@@ -93,8 +100,12 @@ public class PlayerState_Defend : PlayerState_Base
     {
         if (ctx.performed)
         {
-            controller.defenseGrid.PlaceTower(controller.current_grid_space);
-            EvaluateGridSpace(controller); //TEMP
+            if (controller.current_grid_space != null)
+            {
+                controller.defenseGrid.PlaceTower(controller.current_grid_space);
+                EvaluateGridSpace(controller); //TEMP
+            }
+           
         }
             
     }
