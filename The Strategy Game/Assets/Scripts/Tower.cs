@@ -24,15 +24,24 @@ public class Tower : MonoBehaviour
 
     private void Update()
     {
-        if(current_target != null)
+        if (current_target != null)
         {
             Attack();
         }
+        else if (targets.Count > 0)
+            GetNextTarget();
     }
 
     public virtual void Attack()
     {
 
+    }
+
+    public virtual void GetNextTarget()
+    {
+        targets.RemoveAll(x => !x);
+        if (targets.Count > 0)
+            current_target = targets[0].transform;
     }
 
     public virtual void OnNewTargetInArea(GameObject newTarget)
