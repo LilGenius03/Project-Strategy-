@@ -63,6 +63,26 @@ public class PlayerController : MonoBehaviour
         currentState.OnButtonSouth(this, ctx);
     }
 
+    public void SwitchState(int state)
+    {
+        currentState.ExitState(this);
+        switch (state)
+        {
+            case 0:
+                currentState = state_menu;
+                playerState = PlayerStates.menu;
+                break;
+            case 1:
+                currentState = state_defend;
+                playerState = PlayerStates.defending;
+                break;
+            case 2:
+                currentState = state_attack;
+                playerState = PlayerStates.attacking;
+                break;
+        }
+    }
+
     private void OnDrawGizmos()
     {
         //currentState.DrawGizmos(this);

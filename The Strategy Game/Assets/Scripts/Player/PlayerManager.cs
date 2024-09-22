@@ -83,4 +83,21 @@ public class PlayerManager : MonoBehaviour
     {
         Debug.Log("Player " + id + " has joined");
     }
+
+    public void SetDefending(bool p2)
+    {
+        PlayerController controller_p1 = players[0].GetComponent<PlayerController>();
+        PlayerController controller_p2 = players[1].GetComponent<PlayerController>();
+
+        if (p2)
+        {
+            controller_p1.SwitchState(2);
+            controller_p2.SwitchState(1);
+        }
+        else
+        {
+            controller_p2.SwitchState(2);
+            controller_p1.SwitchState(1);
+        }
+    }
 }
