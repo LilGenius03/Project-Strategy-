@@ -105,7 +105,9 @@ public class GameManager : MonoBehaviour
     {
         current_phase = GamePhases.round_begin;
         current_round++;
+
         OnFreezePlayers?.Invoke();
+
         if (p2_defending)
         {
             camera_p1.SetActive(false);

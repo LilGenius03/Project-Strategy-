@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,7 +19,7 @@ public class PlayerManager : MonoBehaviour
     /// TEMP
     /// </summary>
     public Transform[] enemycastles;
-
+    public GameObject[] joinPrompts;
 
     public static PlayerManager instance;
     private void Awake()
@@ -69,6 +70,8 @@ public class PlayerManager : MonoBehaviour
         controller.units = player_unitses[players.Count - 1];
 
         OnPlayerHasJoined.Invoke(players.Count);
+
+        joinPrompts[players.Count - 1].SetActive(false);
 
         if (players.Count == 2)
             GameManager.instance.StartGame();

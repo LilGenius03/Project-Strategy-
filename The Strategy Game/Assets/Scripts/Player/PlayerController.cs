@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     public PlayerState_Defend state_defend = new PlayerState_Defend();
     public PlayerState_Attack state_attack = new PlayerState_Attack();
 
+    bool freeze_movement = true;
+
     public UnitHelper units;
 
     //defend
@@ -33,6 +35,28 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         
+    }
+
+    private void OnEnable()
+    {
+        GameManager.OnFreezePlayers += Freeze;
+        GameManager.OnUnFreezePlayers += UnFreeze;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnFreezePlayers -= Freeze;
+        GameManager.OnUnFreezePlayers -= UnFreeze;
+    }
+
+    public void Freeze()
+    {
+        freeze_movement = true;
+    }
+
+    private void UnFreeze()
+    {
+        freeze_movement = false;
     }
 
     private void Start()
@@ -51,17 +75,20 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+
         currentState.PhysicsUpdate(this);
     }
 
     public void OnMove(InputAction.CallbackContext ctx)
     {
-        currentState.OnMove(this, ctx);
+        if (!freeze_movement)
+            currentState.OnMove(this, ctx);
     }
 
     public void OnButtonSouth(InputAction.CallbackContext ctx)
     {
-        currentState.OnButtonSouth(this, ctx);
+        if(!freeze_movement)
+            currentState.OnButtonSouth(this, ctx);
     }
 
     public void SwitchState(int state)
