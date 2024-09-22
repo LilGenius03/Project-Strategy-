@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR;
 
 public class PlayerState_Defend : PlayerState_Base
 {
@@ -62,13 +63,39 @@ public class PlayerState_Defend : PlayerState_Base
 
             currentPosition = controller.current_grid_space.transform.localPosition;
 
+            EvaluateGridSpace(controller); //TEMP
+
             controller.defendHelper.transform.position = new Vector3(currentPosition.x + 0.5f, 2.5f, currentPosition.z + 0.5f);
+        }
+    }
+
+    //TEMP
+    public void EvaluateGridSpace(PlayerController controller)
+    {
+        switch (controller.current_grid_space.type_of_space)
+        {
+            case 0:
+                controller.defendHelperMR.material.SetColor("_EmissionColor", Color.red);
+                break;
+            case 1:
+                if(controller.current_grid_space.current_tower != null)
+                    controller.defendHelperMR.material.SetColor("_EmissionColor", Color.red);
+                else
+                    controller.defendHelperMR.material.SetColor("_EmissionColor", Color.yellow); 
+                break;
+            case 2:
+                controller.defendHelperMR.material.SetColor("_EmissionColor", Color.red);
+                break;
         }
     }
 
     public override void OnButtonSouth(PlayerController controller, InputAction.CallbackContext ctx)
     {
-        if(ctx.performed)
+        if (ctx.performed)
+        {
             controller.defenseGrid.PlaceTower(controller.current_grid_space);
+            EvaluateGridSpace(controller); //TEMP
+        }
+            
     }
 }

@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public DefenseGrid defenseGrid;
     public grid_space current_grid_space;
     public GameObject defendHelper;
+    public MeshRenderer defendHelperMR;
 
     //attack
     public AttackSpawn attack_spawn;

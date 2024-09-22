@@ -8,6 +8,9 @@ public class Health : MonoBehaviour
     [SerializeField] float max_health = 10;
     private float current_health;
 
+    [SerializeField] MeshRenderer[] healthMeshes; //temp
+    [SerializeField] Gradient healthColorGradient;
+
     private void Start()
     {
         current_health = max_health;
@@ -25,6 +28,7 @@ public class Health : MonoBehaviour
     {
         current_health -= amount;
         current_health = Mathf.Floor(current_health);
+        SetHealthColor();
         OnTakeDamage.Invoke();
         if(current_health <= 0)
         {
@@ -36,5 +40,13 @@ public class Health : MonoBehaviour
     {
         OnDie.Invoke();
         Destroy(gameObject);
+    }
+
+    void SetHealthColor()
+    {
+        foreach (MeshRenderer mr in healthMeshes)
+        {
+            mr.material.SetColor("_BaseColor", healthColorGradient.Evaluate((max_health - current_health) / max_health));
+        }
     }
 }
