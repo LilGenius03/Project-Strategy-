@@ -26,6 +26,7 @@ public class Tower_Basic : Tower
                         targetHealth.TakeDamage(damage);
 
                 }
+                StartTracer(hit.point);
             }
             Debug.DrawLine(fire_pos.position, hit.point, Color.red, 0.75f);
             fire_delay = rate_of_fire;

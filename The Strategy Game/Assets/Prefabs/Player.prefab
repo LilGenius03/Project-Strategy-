@@ -127,6 +127,7 @@ MonoBehaviour:
   defendHelper: {fileID: 8714200596161996609}
   attack_spawn: {fileID: 0}
   temp_attackingdude: {fileID: 4234291790501660461, guid: b79da94aa91b8f74583ee2bb105a5d77, type: 3}
+  enemyCastle: {fileID: 0}
 --- !u!1 &8714200596161996609
 GameObject:
   m_ObjectHideFlags: 0

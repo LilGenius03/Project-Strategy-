@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ public class Tower : MonoBehaviour
     public Transform fire_pos;
     public float rate_of_fire;
     public float damage;
+    public LineRenderer lr;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -44,7 +46,26 @@ public class Tower : MonoBehaviour
     {
         targets.Remove(oldTarget);
         if (current_target == oldTarget)
-            current_target = targets[0].transform;
+        {
+            if (targets.Count > 0)
+                current_target = targets[0].transform;
+            else
+                current_target = null;
+        }
+
+    }
+
+    public void StartTracer(Vector3 pos)
+    {
+        StartCoroutine(SpawnTracer(pos));
+    }
+
+    public IEnumerator SpawnTracer(Vector3 pos)
+    {
+        lr.SetPosition(0, fire_pos.position);
+        lr.SetPosition(1, pos);
+        yield return new WaitForSecondsRealtime(0.5f);
+        lr.SetPosition(1, fire_pos.position);
     }
 
     private void OnDrawGizmos()

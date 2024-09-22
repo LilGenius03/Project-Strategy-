@@ -575,6 +575,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2380752192280966549, guid: b79da94aa91b8f74583ee2bb105a5d77, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4234291790501660461, guid: b79da94aa91b8f74583ee2bb105a5d77, type: 3}
       propertyPath: m_Name
       value: AttackingUnit
@@ -595,6 +599,14 @@ PrefabInstance:
     - target: {fileID: 1316139928487719502, guid: 84468c7e93234654fb632369d4206140, type: 3}
       propertyPath: m_Name
       value: Tower_Basic
+      objectReference: {fileID: 0}
+    - target: {fileID: 5241483892325117687, guid: 84468c7e93234654fb632369d4206140, type: 3}
+      propertyPath: m_Size.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5241483892325117687, guid: 84468c7e93234654fb632369d4206140, type: 3}
+      propertyPath: m_Size.z
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5294232139237327950, guid: 84468c7e93234654fb632369d4206140, type: 3}
       propertyPath: m_LocalPosition.x
@@ -635,6 +647,10 @@ PrefabInstance:
     - target: {fileID: 5294232139237327950, guid: 84468c7e93234654fb632369d4206140, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5370227580683656826, guid: 84468c7e93234654fb632369d4206140, type: 3}
+      propertyPath: m_TagString
+      value: defense_unit
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

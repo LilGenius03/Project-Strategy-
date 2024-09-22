@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     //attack
     public AttackSpawn attack_spawn;
     public GameObject temp_attackingdude;
+    public Transform enemyCastle;
 
     private void Awake()
     {
@@ -66,11 +67,11 @@ public class PlayerController : MonoBehaviour
         //currentState.DrawGizmos(this);
     }
 
-    public void HelpInstantiate(GameObject object2Instantiate, Vector3 position, Quaternion rotation, Transform parent = null)
+    public GameObject HelpInstantiate(GameObject object2Instantiate, Vector3 position, Quaternion rotation, Transform parent = null)
     {
         if (parent != null)
-            Instantiate(object2Instantiate, position, rotation, parent);
+            return Instantiate(object2Instantiate, position, rotation, parent);
         else
-            Instantiate(object2Instantiate, position, rotation);
+            return Instantiate(object2Instantiate, position, rotation);
     }
 }

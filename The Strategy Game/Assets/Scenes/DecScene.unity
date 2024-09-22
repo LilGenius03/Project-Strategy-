@@ -1156,7 +1156,7 @@ MonoBehaviour:
   - {fileID: 1649548559}
   playable_space_x: 4
   playable_space_y: 10
-  debug_tower: {fileID: 1316139928487719502, guid: 20518e4a5c8a313478f25edec32d107e, type: 3}
+  debug_tower: {fileID: 1316139928487719502, guid: 84468c7e93234654fb632369d4206140, type: 3}
 --- !u!4 &354106681
 Transform:
   m_ObjectHideFlags: 0
@@ -4283,6 +4283,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1269431688}
+  - component: {fileID: 1269431689}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4305,6 +4306,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1269431689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269431687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5d7229f645dc634896e51a121def34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1270095928
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5155,6 +5168,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1aa05e7abfc03c74db1fa73f5f5bbc5a, type: 3}
+--- !u!4 &1474469624 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3894866304932019607, guid: 1aa05e7abfc03c74db1fa73f5f5bbc5a, type: 3}
+  m_PrefabInstance: {fileID: 1474469623}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1488206229
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5331,11 +5349,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51abd0a25271df94fb1d749f0c782a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1576425003 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4642859393200782870, guid: 1aa05e7abfc03c74db1fa73f5f5bbc5a, type: 3}
-  m_PrefabInstance: {fileID: 5963250035649136047}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1620085070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6012,7 +6025,7 @@ MonoBehaviour:
   - {fileID: 688301084}
   playable_space_x: 4
   playable_space_y: 10
-  debug_tower: {fileID: 1316139928487719502, guid: 20518e4a5c8a313478f25edec32d107e, type: 3}
+  debug_tower: {fileID: 1316139928487719502, guid: 84468c7e93234654fb632369d4206140, type: 3}
 --- !u!4 &1784138312
 Transform:
   m_ObjectHideFlags: 0
@@ -6526,7 +6539,9 @@ MonoBehaviour:
   player_attack_spawns:
   - {fileID: 1244491810}
   - {fileID: 1294755681}
-  castle: {fileID: 1576425003}
+  enemycastles:
+  - {fileID: 1474469624}
+  - {fileID: 5963250035649136048}
 --- !u!114 &1948221452 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5081809419878282284, guid: a0de99c86eab4a346aea0d9ec5ab17dd, type: 3}
@@ -7391,6 +7406,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1aa05e7abfc03c74db1fa73f5f5bbc5a, type: 3}
+--- !u!4 &5963250035649136048 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3894866304932019607, guid: 1aa05e7abfc03c74db1fa73f5f5bbc5a, type: 3}
+  m_PrefabInstance: {fileID: 5963250035649136047}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7798300321745675714
 PrefabInstance:
   m_ObjectHideFlags: 0

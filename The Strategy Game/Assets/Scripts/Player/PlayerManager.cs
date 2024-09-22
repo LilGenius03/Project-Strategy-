@@ -16,7 +16,7 @@ public class PlayerManager : MonoBehaviour
     /// <summary>
     /// TEMP
     /// </summary>
-    public GameObject castle;
+    public Transform[] enemycastles;
 
 
     public static PlayerManager instance;
@@ -64,6 +64,8 @@ public class PlayerManager : MonoBehaviour
         controller.id = (short) players.Count;
         controller.defenseGrid = player_grids[players.Count - 1];
         controller.attack_spawn = player_attack_spawns[players.Count - 1];
+        controller.enemyCastle = enemycastles[players.Count - 1];
+
         OnPlayerHasJoined.Invoke(players.Count);
     }
 

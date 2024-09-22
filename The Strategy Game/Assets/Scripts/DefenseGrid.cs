@@ -36,25 +36,4 @@ public class DefenseGrid : MonoBehaviour
             space.current_tower = newTower.GetComponent<Tower>();
         }
     }
-
-/*    private void OnDrawGizmos()
-    {
-        foreach (grid_space space in gridSpaces)
-        {
-            switch (space.type_of_space)
-            {
-                case 0:
-                    Gizmos.color = Color.gray;
-                    break;
-                case 1:
-                    Gizmos.color = Color.blue;
-                    break;
-                case 2:
-                    Gizmos.color = Color.red;
-                    break;
-            }
-            Vector3 grid_poses = transform.position + new Vector3(space.position.x, 0f, space.position.y);
-            Gizmos.DrawCube(grid_poses, new Vector3(1f, 0.0001f, 1f));
-        }
-    } */
 }
