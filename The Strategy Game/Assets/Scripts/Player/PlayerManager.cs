@@ -67,6 +67,9 @@ public class PlayerManager : MonoBehaviour
         controller.enemyCastle = enemycastles[players.Count - 1];
 
         OnPlayerHasJoined.Invoke(players.Count);
+
+        if (players.Count == 2)
+            GameManager.instance.StartGame();
     }
 
     public void ClearPlayers()

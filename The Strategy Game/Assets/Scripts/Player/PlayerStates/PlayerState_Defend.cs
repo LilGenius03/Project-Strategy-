@@ -8,6 +8,10 @@ public class PlayerState_Defend : PlayerState_Base
 
     public override void EnterState(PlayerController controller)
     {
+        controller.defendHelper.SetActive(true);
+
+        currentPosition = controller.defenseGrid.player_start_pos;
+
         controller.current_grid_space = controller.defenseGrid.FindSpace(currentPosition);
 
         currentPosition = controller.current_grid_space.transform.localPosition;

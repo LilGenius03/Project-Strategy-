@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour
                 playerState = PlayerStates.attacking;
                 break;
         }
+        currentState.EnterState(this);
     }
 
     private void OnDrawGizmos()

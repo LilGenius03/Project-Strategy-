@@ -2,6 +2,16 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
+public enum GamePhases
+{
+    game_begin,
+    round_begin,
+    prep,
+    combat,
+    round_over,
+    game_over
+}
+
 public class GameManager : MonoBehaviour
 {
     public delegate void FreezePlayers();
@@ -29,9 +39,12 @@ public class GameManager : MonoBehaviour
     public delegate void GameOver(int winner);
     public static event GameOver OnGameOver;
 
+    public GamePhases current_phase;
+
     [SerializeField] GameObject camera_p1, camera_p2;
 
     [SerializeField] TextMeshProUGUI countdownText;
+    [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] float countdownTime;
 
     [SerializeField] float prep_time = 15f;
@@ -47,6 +60,9 @@ public class GameManager : MonoBehaviour
 
     public int p1_score;
     public int p2_score;
+
+    //SHITE - WILL IT JUST BE TEMP? PROBS NOT 
+
 
     #region Singleton
     public static GameManager instance;
@@ -65,7 +81,6 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        StartCoroutine(Start_Round());
     }
 
     // Update is called once per frame
@@ -74,8 +89,21 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void StartGame()
+    {
+        StartCoroutine(stupiddelaythingyyo());
+    }
+
+    public IEnumerator stupiddelaythingyyo()
+    {
+        yield return new WaitForEndOfFrame();
+        OnGameBegin?.Invoke();
+        StartCoroutine(Start_Round());
+    }
+
     IEnumerator Start_Round()
     {
+        current_phase = GamePhases.round_begin;
         current_round++;
         OnFreezePlayers?.Invoke();
         if (p2_defending)
@@ -107,17 +135,59 @@ public class GameManager : MonoBehaviour
 
     IEnumerator Prep_Phase()
     {
+        current_phase = GamePhases.prep;
         OnUnFreezePlayers?.Invoke();
         OnPrepBegin?.Invoke();
-        yield return new WaitForSecondsRealtime(prep_time);
+
+        countdownTime = prep_time;
+        timerText.gameObject.SetActive(true);
+        while (countdownTime > 3f)
+        {
+            timerText.text = countdownTime.ToString();
+            yield return new WaitForSecondsRealtime(1f);
+            countdownTime--;
+        }
+        countdownText.gameObject.SetActive(true);
+        while (countdownTime > 0)
+        {
+            timerText.text = countdownTime.ToString();
+            countdownText.text = countdownTime.ToString();
+            yield return new WaitForSecondsRealtime(1f);
+            countdownTime--;
+        }
+        countdownText.gameObject.SetActive(false);
+        timerText.gameObject.SetActive(false);
+        countdownTime = 3f;
+
         OnPrepOver?.Invoke();
         combat_coroutine = StartCoroutine(Combat_Phase());
     }
 
     IEnumerator Combat_Phase()
     {
+        current_phase = GamePhases.combat;
         OnCombatBegin?.Invoke();
-        yield return new WaitForSecondsRealtime(combat_time);
+
+        countdownTime = combat_time;
+        timerText.gameObject.SetActive(true);
+        while (countdownTime > 3f)
+        {
+            timerText.text = countdownTime.ToString();
+            yield return new WaitForSecondsRealtime(1f);
+            countdownTime--;
+        }
+        countdownText.gameObject.SetActive(true);
+        while (countdownTime > 0)
+        {
+            timerText.text = countdownTime.ToString();
+            countdownText.text = countdownTime.ToString();
+            yield return new WaitForSecondsRealtime(1f);
+            countdownTime--;
+        }
+        countdownText.gameObject.SetActive(false);
+        timerText.gameObject.SetActive(false);
+        countdownTime = 3f;
+
         OnCombatOver?.Invoke();
         OnFreezePlayers?.Invoke();
         if (p2_defending)
@@ -128,12 +198,14 @@ public class GameManager : MonoBehaviour
 
     IEnumerator End_Round(int round_winner)
     {
+        current_phase = GamePhases.round_over;
         StopCoroutine(combat_coroutine);
-        OnRoundOver?.Invoke(round_winner);
         if (round_winner == 0)
             p1_score++;
         else if (round_winner == 1)
             p2_score++;
+
+        OnRoundOver?.Invoke(round_winner);
 
         yield return new WaitForSecondsRealtime(round_win_time);
         if (p1_score == max_rounds_needed)
@@ -145,11 +217,15 @@ public class GameManager : MonoBehaviour
             End_Game(1);
         }
         else
+        {
+            p2_defending = !p2_defending;
             StartCoroutine(Start_Round());
+        }        
     }
 
     void End_Game(int game_winner)
     {
+        current_phase = GamePhases.game_over;
         OnGameOver?.Invoke(game_winner);
     }
 

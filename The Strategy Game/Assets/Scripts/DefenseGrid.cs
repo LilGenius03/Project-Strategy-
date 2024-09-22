@@ -6,6 +6,7 @@ public class DefenseGrid : MonoBehaviour
 {
     public int index;
     public PlayerController player_owner;
+    public Vector3 player_start_pos;
 
     public List<grid_space> gridSpaces = new List<grid_space>();
 
@@ -35,5 +36,11 @@ public class DefenseGrid : MonoBehaviour
             GameObject newTower = Instantiate(debug_tower, space.transform.position, Quaternion.identity, transform);
             space.current_tower = newTower.GetComponent<Tower>();
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(transform.position + player_start_pos, 0.1f);
     }
 }
