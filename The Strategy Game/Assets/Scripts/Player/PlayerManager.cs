@@ -10,6 +10,7 @@ public class PlayerManager : MonoBehaviour
     public List<PlayerInput> players = new List<PlayerInput>();
     public DefenseGrid[] player_grids;
     public AttackSpawn[] player_attack_spawns;
+    public UnitHelper[] player_unitses;
 
     private PlayerInputManager playerInputManager;
 
@@ -65,6 +66,7 @@ public class PlayerManager : MonoBehaviour
         controller.defenseGrid = player_grids[players.Count - 1];
         controller.attack_spawn = player_attack_spawns[players.Count - 1];
         controller.enemyCastle = enemycastles[players.Count - 1];
+        controller.units = player_unitses[players.Count - 1];
 
         OnPlayerHasJoined.Invoke(players.Count);
 

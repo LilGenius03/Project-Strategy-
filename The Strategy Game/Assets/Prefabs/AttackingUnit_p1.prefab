@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: -5534224696020683872}
   - component: {fileID: -208501909373522638}
   m_Layer: 7
-  m_Name: AttackingUnit
+  m_Name: AttackingUnit_p1
   m_TagString: attack_unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -289,9 +289,9 @@ MonoBehaviour:
   - {fileID: 6568168359568596122}
   healthColorGradient:
     serializedVersion: 2
-    key0: {r: 1, g: 0.32941177, b: 0.7137255, a: 1}
-    key1: {r: 0.96981126, g: 0.20034645, b: 0.18115334, a: 1}
-    key2: {r: 0.2528302, g: 0.13309364, b: 0.1372949, a: 0}
+    key0: {r: 0.32941177, g: 0.8901961, b: 1, a: 1}
+    key1: {r: 0.5435761, g: 0.32941175, b: 1, a: 1}
+    key2: {r: 0.24896953, g: 0.20392157, b: 0.28235295, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
@@ -409,7 +409,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 93e613d8c50b55c45b448d36c09a3302, type: 2}
+  - {fileID: 2100000, guid: a13c43dcf2b50854687a44643781d580, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -495,7 +495,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 93e613d8c50b55c45b448d36c09a3302, type: 2}
+  - {fileID: 2100000, guid: a13c43dcf2b50854687a44643781d580, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     public PlayerState_Defend state_defend = new PlayerState_Defend();
     public PlayerState_Attack state_attack = new PlayerState_Attack();
 
+    public UnitHelper units;
+
     //defend
     public DefenseGrid defenseGrid;
     public grid_space current_grid_space;
@@ -26,7 +28,6 @@ public class PlayerController : MonoBehaviour
 
     //attack
     public AttackSpawn attack_spawn;
-    public GameObject temp_attackingdude;
     public Transform enemyCastle;
 
     private void Awake()

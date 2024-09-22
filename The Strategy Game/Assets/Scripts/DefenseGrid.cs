@@ -10,9 +10,9 @@ public class DefenseGrid : MonoBehaviour
 
     public List<grid_space> gridSpaces = new List<grid_space>();
 
-    public float playable_space_x, playable_space_y;
+    public float playable_space_x_min, playable_space_x_max;
+    public float playable_space_y_min, playable_space_y_max;
 
-    [SerializeField] private GameObject debug_tower;
 
     private void Awake()
     {
@@ -23,17 +23,17 @@ public class DefenseGrid : MonoBehaviour
     {
         foreach (grid_space space in gridSpaces)
         {
-            if (space.transform.localPosition == pos)
+            if (space.transform.position == pos)
                 return space;
         }
         return null;
     }
 
-    public void PlaceTower(grid_space space)
+    public void PlaceTower(grid_space space, GameObject tower)
     {
         if(space.type_of_space == 1 && space.current_tower == null)
         {
-            GameObject newTower = Instantiate(debug_tower, space.transform.position, Quaternion.identity, transform);
+            GameObject newTower = Instantiate(tower, space.transform.position, Quaternion.identity, transform);
             space.current_tower = newTower.GetComponent<Tower>();
         }
     }

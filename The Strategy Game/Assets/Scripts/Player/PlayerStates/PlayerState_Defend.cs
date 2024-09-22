@@ -14,8 +14,8 @@ public class PlayerState_Defend : PlayerState_Base
 
         controller.current_grid_space = controller.defenseGrid.FindSpace(currentPosition);
 
-        currentPosition = controller.current_grid_space.transform.localPosition;
-        controller.defendHelper.transform.position = new Vector3(currentPosition.x + 0.5f, 2.5f, currentPosition.z + 0.5f);
+        currentPosition = controller.current_grid_space.transform.position;
+        controller.defendHelper.transform.position = new Vector3(currentPosition.x, 2.5f, currentPosition.z);
     }
 
     public override void ExitState(PlayerController controller)
@@ -41,27 +41,27 @@ public class PlayerState_Defend : PlayerState_Base
             if(input_vector.x > 0.5f)
             {
                 currentPosition.x += Mathf.Ceil(input_vector.x);
-                if (currentPosition.x >= controller.defenseGrid.playable_space_x)
-                    currentPosition.x = controller.defenseGrid.playable_space_x - 1;
+                if (currentPosition.x >= controller.defenseGrid.playable_space_x_max)
+                    currentPosition.x = controller.defenseGrid.playable_space_x_max - 1;
             }
             else if (input_vector.x < -0.5f)
             {
                 currentPosition.x += Mathf.Floor(input_vector.x);
-                if (currentPosition.x <= 0)
-                    currentPosition.x = 0;
+                if (currentPosition.x <= controller.defenseGrid.playable_space_x_min)
+                    currentPosition.x = controller.defenseGrid.playable_space_x_min;
             }
                 
             if (input_vector.y > 0.5f)
             {
                 currentPosition.z += Mathf.Ceil(input_vector.y);
-                if (currentPosition.z >= controller.defenseGrid.playable_space_y)
-                    currentPosition.z = controller.defenseGrid.playable_space_y - 1;
+                if (currentPosition.z >= controller.defenseGrid.playable_space_y_max)
+                    currentPosition.z = controller.defenseGrid.playable_space_y_max - 1;
             }               
             else if (input_vector.y < -0.5f)
             {
                 currentPosition.z += Mathf.Floor(input_vector.y);
-                if (currentPosition.z <= 0)
-                    currentPosition.z = 0;
+                if (currentPosition.z <= controller.defenseGrid.playable_space_y_min)
+                    currentPosition.z = controller.defenseGrid.playable_space_y_min;
             }
 
             Debug.Log(currentPosition);
@@ -70,13 +70,13 @@ public class PlayerState_Defend : PlayerState_Base
 
             if(controller.current_grid_space != null)
             {
-                currentPosition = controller.current_grid_space.transform.localPosition;
+                currentPosition = controller.current_grid_space.transform.position;
 
                             EvaluateGridSpace(controller); //TEMP
             }
             
 
-            controller.defendHelper.transform.position = new Vector3(currentPosition.x + 0.5f, 2.5f, currentPosition.z + 0.5f);
+            controller.defendHelper.transform.position = new Vector3(currentPosition.x, 2.5f, currentPosition.z);
         }
     }
 
@@ -106,7 +106,7 @@ public class PlayerState_Defend : PlayerState_Base
         {
             if (controller.current_grid_space != null)
             {
-                controller.defenseGrid.PlaceTower(controller.current_grid_space);
+                controller.defenseGrid.PlaceTower(controller.current_grid_space, controller.units.tower_basic);
                 EvaluateGridSpace(controller); //TEMP
             }
            
