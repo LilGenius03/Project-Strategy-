@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2476088813286905511}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,9 +44,11 @@ GameObject:
   - component: {fileID: 7493455197265540913}
   - component: {fileID: 5801663908594553246}
   - component: {fileID: 1034942896605273425}
-  m_Layer: 0
+  - component: {fileID: -5534224696020683872}
+  - component: {fileID: -208501909373522638}
+  m_Layer: 7
   m_Name: AttackingUnit
-  m_TagString: Untagged
+  m_TagString: attack_unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,6 +126,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5128a88c43d1b194f8b939104eb6d929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+--- !u!114 &-5534224696020683872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4234291790501660461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d58a6b4dfea00246a5f8ecd1c409554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDie:
+    m_PersistentCalls:
+      m_Calls: []
+  max_health: 5
+--- !u!54 &-208501909373522638
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4234291790501660461}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &4247071420348608656
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,7 +187,7 @@ GameObject:
   - component: {fileID: 3864891810283118434}
   - component: {fileID: 7563006610758044879}
   - component: {fileID: 576281496441079205}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +274,7 @@ GameObject:
   - component: {fileID: 8537211365732588166}
   - component: {fileID: 683068901505687412}
   - component: {fileID: 6568168359568596122}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
