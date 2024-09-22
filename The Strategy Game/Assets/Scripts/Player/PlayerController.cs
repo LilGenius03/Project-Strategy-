@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public PlayerState_Attack state_attack = new PlayerState_Attack();
 
     bool freeze_movement = true;
+    public bool isPrepping;
 
     public UnitHelper units;
 
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
     //attack
     public AttackSpawn attack_spawn;
     public Transform enemyCastle;
+    public GameObject attackHelper;
 
     private void Awake()
     {
@@ -41,12 +43,16 @@ public class PlayerController : MonoBehaviour
     {
         GameManager.OnFreezePlayers += Freeze;
         GameManager.OnUnFreezePlayers += UnFreeze;
+        GameManager.OnPrepBegin += Switch2Prep;
+        GameManager.OnCombatBegin += Switch2Combat;
     }
 
     private void OnDisable()
     {
         GameManager.OnFreezePlayers -= Freeze;
         GameManager.OnUnFreezePlayers -= UnFreeze;
+        GameManager.OnPrepBegin -= Switch2Prep;
+        GameManager.OnCombatBegin -= Switch2Combat;
     }
 
     public void Freeze()
@@ -54,9 +60,19 @@ public class PlayerController : MonoBehaviour
         freeze_movement = true;
     }
 
-    private void UnFreeze()
+    public void UnFreeze()
     {
         freeze_movement = false;
+    }
+
+    public void Switch2Prep()
+    {
+        isPrepping = true;
+    }
+
+    public void Switch2Combat()
+    {
+        isPrepping = false;
     }
 
     private void Start()

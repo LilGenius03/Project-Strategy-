@@ -198,6 +198,11 @@ public class GameManager : MonoBehaviour
             StartCoroutine(End_Round(0));
     }
 
+    public void CastleDestroyed(int winner)
+    {
+        StartCoroutine(End_Round(winner));
+    }
+
     IEnumerator End_Round(int round_winner)
     {
         current_phase = GamePhases.round_over;
@@ -206,6 +211,9 @@ public class GameManager : MonoBehaviour
             p1_score++;
         else if (round_winner == 1)
             p2_score++;
+
+        countdownTime = 3f;
+        timerText.gameObject.SetActive(false);
 
         OnRoundOver?.Invoke(round_winner);
 

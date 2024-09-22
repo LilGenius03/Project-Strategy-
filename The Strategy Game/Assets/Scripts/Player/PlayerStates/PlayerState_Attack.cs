@@ -12,6 +12,8 @@ public class PlayerState_Attack : PlayerState_Base
     public override void EnterState(PlayerController controller)
     {
         controller.defendHelper.SetActive(false);
+        controller.attackHelper.SetActive(true);
+        controller.attackHelper.transform.position = controller.attack_spawn.spawnPositions[currentSpawnPosition].position;
     }
 
     public override void ExitState(PlayerController controller)
@@ -48,6 +50,7 @@ public class PlayerState_Attack : PlayerState_Base
             if (currentSpawnPosition < 0)
                 currentSpawnPosition = controller.attack_spawn.spawnPositions.Length - 1;
             Debug.Log(currentSpawnPosition);
+            controller.attackHelper.transform.position = controller.attack_spawn.spawnPositions[currentSpawnPosition].position;
         }
 
         if (ctx.canceled)
@@ -58,8 +61,15 @@ public class PlayerState_Attack : PlayerState_Base
     {
         if (ctx.performed)
         {
-            GameObject littleDude = controller.HelpInstantiate(controller.units.attacker_basic, controller.attack_spawn.spawnPositions[currentSpawnPosition].position, Quaternion.identity, controller.attack_spawn.spawnPositions[currentSpawnPosition]);
-            littleDude.GetComponent<AttackingDude>().AddCastleAsTarget(controller.enemyCastle);
+            if (!controller.isPrepping)
+            {
+                GameObject littleDude = controller.HelpInstantiate(controller.units.attacker_basic, controller.attack_spawn.spawnPositions[currentSpawnPosition].position, Quaternion.identity, controller.attack_spawn.spawnPositions[currentSpawnPosition]);
+                littleDude.GetComponent<AttackingDude>().AddCastleAsTarget(controller.enemyCastle);
+            }
+            else
+            {
+                //buy some dude
+            }
         }
     }
 
