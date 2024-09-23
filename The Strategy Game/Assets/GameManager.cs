@@ -214,6 +214,7 @@ public class GameManager : MonoBehaviour
 
         countdownTime = 3f;
         timerText.gameObject.SetActive(false);
+        OnFreezePlayers?.Invoke();
 
         OnRoundOver?.Invoke(round_winner);
 

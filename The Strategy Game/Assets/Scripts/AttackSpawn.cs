@@ -16,11 +16,14 @@ public class AttackSpawn : MonoBehaviour
 
     void PurgeAttackers(int winner)
     {
+        Debug.Log("YOOOOO");
         foreach (Transform spawn in spawnPositions)
         {
-            for (int i = transform.childCount - 1; i > 1; i--)
+            Debug.Log("DUDEEE");
+            for (int i = spawn.childCount - 1; i > 1; i--)
             {
                 Destroy(spawn.GetChild(i).gameObject);
+                Debug.Log("DOPkdpoKDPOk");
             }
         }
         
