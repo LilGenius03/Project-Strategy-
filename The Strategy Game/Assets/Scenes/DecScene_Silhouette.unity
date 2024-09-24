@@ -17264,7 +17264,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.083333336
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: bfb3dd13791aa8647b540e09fdb198f5, type: 2}
+  m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0
 --- !u!1001 &1078041648
 PrefabInstance:
@@ -20595,6 +20595,9 @@ MonoBehaviour:
   spawnPositions:
   - {fileID: 1765703438}
   - {fileID: 1937625538}
+  target_castle:
+  - {fileID: 5963250035649136048}
+  - {fileID: 5963250035649136048}
 --- !u!4 &1294755682
 Transform:
   m_ObjectHideFlags: 0
@@ -23041,6 +23044,9 @@ MonoBehaviour:
   spawnPositions:
   - {fileID: 1067252465}
   - {fileID: 1619186843}
+  target_castle:
+  - {fileID: 1474469624}
+  - {fileID: 1474469624}
 --- !u!4 &1431668359
 Transform:
   m_ObjectHideFlags: 0
@@ -28825,7 +28831,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.083333336
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: bfb3dd13791aa8647b540e09fdb198f5, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1001 &1767437469
 PrefabInstance:
