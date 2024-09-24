@@ -17212,7 +17212,7 @@ GameObject:
   - component: {fileID: 1067252465}
   - component: {fileID: 1067252466}
   m_Layer: 0
-  m_Name: Attack_Spawn_Pos_1
+  m_Name: Attack_Spawn_Pos_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26891,7 +26891,7 @@ GameObject:
   - component: {fileID: 1619186843}
   - component: {fileID: 1619186844}
   m_Layer: 0
-  m_Name: Attack_Spawn_Pos_2
+  m_Name: Attack_Spawn_Pos_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28779,7 +28779,7 @@ GameObject:
   - component: {fileID: 1765703438}
   - component: {fileID: 1765703439}
   m_Layer: 0
-  m_Name: Attack_Spawn_Pos_1
+  m_Name: Attack_Spawn_Pos_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31988,7 +31988,7 @@ GameObject:
   - component: {fileID: 1937625538}
   - component: {fileID: 1937625539}
   m_Layer: 0
-  m_Name: Attack_Spawn_Pos_2
+  m_Name: Attack_Spawn_Pos_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
