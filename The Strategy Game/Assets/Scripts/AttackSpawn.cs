@@ -20,7 +20,7 @@ public class AttackSpawn : MonoBehaviour
         foreach (Transform spawn in spawnPositions)
         {
             Debug.Log("DUDEEE");
-            for (int i = spawn.childCount - 1; i > 1; i--)
+            for (int i = spawn.childCount - 1; i > 0; i--)
             {
                 Destroy(spawn.GetChild(i).gameObject);
                 Debug.Log("DOPkdpoKDPOk");
