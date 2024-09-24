@@ -89,6 +89,12 @@ public class GameManager : MonoBehaviour
         
     }
 
+    void SwitchSides()
+    {
+        p2_defending = !p2_defending;
+        StartCoroutine(Start_Round());
+    }
+
     public void StartGame()
     {
         StartCoroutine(stupiddelaythingyyo());
@@ -192,10 +198,7 @@ public class GameManager : MonoBehaviour
 
         OnCombatOver?.Invoke();
         OnFreezePlayers?.Invoke();
-        if (p2_defending)
-            StartCoroutine(End_Round(1));
-        else
-            StartCoroutine(End_Round(0));
+        SwitchSides();
     }
 
     public void CastleDestroyed(int winner)
@@ -219,19 +222,7 @@ public class GameManager : MonoBehaviour
         OnRoundOver?.Invoke(round_winner);
 
         yield return new WaitForSecondsRealtime(round_win_time);
-        if (p1_score == max_rounds_needed)
-        {
-            End_Game(0);
-        }
-        else if (p2_score == max_rounds_needed)
-        {
-            End_Game(1);
-        }
-        else
-        {
-            p2_defending = !p2_defending;
-            StartCoroutine(Start_Round());
-        }        
+        End_Game(round_winner);   
     }
 
     void End_Game(int game_winner)

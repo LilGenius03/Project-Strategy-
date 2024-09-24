@@ -64,7 +64,7 @@ public class PlayerState_Attack : PlayerState_Base
             if (!controller.isPrepping)
             {
                 GameObject littleDude = controller.HelpInstantiate(controller.units.attacker_basic, controller.attack_spawn.spawnPositions[currentSpawnPosition].position, Quaternion.identity, controller.attack_spawn.spawnPositions[currentSpawnPosition]);
-                littleDude.GetComponent<AttackingDude>().AddCastleAsTarget(controller.enemyCastle);
+                littleDude.GetComponent<AttackingDude>().AddCastleAsTarget(controller.attack_spawn.target_castle[currentSpawnPosition]);
             }
             else
             {
