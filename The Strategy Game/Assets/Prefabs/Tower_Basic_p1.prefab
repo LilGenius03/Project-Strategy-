@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edc6a9380394f7345b05a5c30ca4077c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type_of_tower: 1
   current_target: {fileID: 0}
   ignore_layers:
     serializedVersion: 2

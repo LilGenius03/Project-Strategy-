@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e14c4c32c0333a048aef113338950cd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type_of_tower: 0
+  type_of_tower: 2
   current_target: {fileID: 0}
   ignore_layers:
     serializedVersion: 2
