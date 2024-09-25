@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: units_p2
   m_EditorClassIdentifier: 
   tower_basic: {fileID: 1316139928487719502, guid: d4fb65434c701a64aa20ebd53ad0fa72, type: 3}
-  attacker_basic: {fileID: 4234291790501660461, guid: b79da94aa91b8f74583ee2bb105a5d77, type: 3}
+  attacker_basic: {fileID: 4234291790501660461, guid: 7a4a29aea2770b7418e85aa116baa487, type: 3}

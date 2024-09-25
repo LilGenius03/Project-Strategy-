@@ -4975,6 +4975,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51abd0a25271df94fb1d749f0c782a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &501467087 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3894866304932019607, guid: 1aa05e7abfc03c74db1fa73f5f5bbc5a, type: 3}
+  m_PrefabInstance: {fileID: 425727432}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &509708619
 GameObject:
   m_ObjectHideFlags: 0
@@ -12984,8 +12989,8 @@ MonoBehaviour:
   countdownText: {fileID: 1084933636}
   timerText: {fileID: 1213328951}
   countdownTime: 3
-  prep_time: 2
-  combat_time: 60
+  prep_time: 5
+  combat_time: 120
   win_time: 15
   round_win_time: 4
   current_round: 0
@@ -14803,7 +14808,7 @@ MonoBehaviour:
   - {fileID: 1619186843}
   target_castle:
   - {fileID: 1474469624}
-  - {fileID: 1474469624}
+  - {fileID: 501467087}
 --- !u!4 &1431668359
 Transform:
   m_ObjectHideFlags: 0
