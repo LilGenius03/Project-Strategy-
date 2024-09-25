@@ -255,10 +255,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 5801663908594553246}
-  target: {fileID: 0}
+  targets: []
   current_target: {fileID: 0}
   castle: {fileID: 0}
   damage: 1
+  speed: 0.5
   rate_of_fire: 2
   fire_delay: 0
   attack_range: 3

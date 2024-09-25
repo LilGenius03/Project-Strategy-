@@ -77,6 +77,24 @@ public class Tower : MonoBehaviour
         lr.SetPosition(1, fire_pos.position);
     }
 
+    public void StartTracerCurve(Vector3 pos)
+    {
+        StartCoroutine(SpawnTracerCurve(pos));
+    }
+
+    public IEnumerator SpawnTracerCurve(Vector3 pos)
+    {
+        lr.SetPosition(0, fire_pos.position);
+        Vector3 mid_pos = Vector3.Lerp(fire_pos.position, pos, 0.5f);
+        mid_pos.y += mid_pos.y;
+        Debug.Log(Vector3.Lerp(fire_pos.position, pos, 0.5f));
+        lr.SetPosition(1, mid_pos);
+        lr.SetPosition(2, pos);
+        yield return new WaitForSecondsRealtime(0.5f);
+        lr.SetPosition(1, fire_pos.position);
+        lr.SetPosition(2, fire_pos.position);
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;

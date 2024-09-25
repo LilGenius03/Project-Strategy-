@@ -4,14 +4,14 @@ using UnityEngine.AI;
 
 public class AttackingDude : MonoBehaviour
 {
-    [SerializeField] NavMeshAgent agent;
-    public Transform target; //temp
+    public NavMeshAgent agent;
 
-    private List<GameObject> targets = new List<GameObject>();
+    public List<GameObject> targets = new List<GameObject>();
     public Transform current_target;
     public Transform castle;
 
     public float damage;
+    public float speed;
     public float rate_of_fire;
     public float fire_delay;
     public float attack_range;
@@ -21,6 +21,8 @@ public class AttackingDude : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         fire_delay = rate_of_fire;
+        agent.speed = speed;
+
     }
 
     // Update is called once per frame

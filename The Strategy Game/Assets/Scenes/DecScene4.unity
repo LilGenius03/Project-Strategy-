@@ -15749,7 +15749,7 @@ MonoBehaviour:
   countdownText: {fileID: 1084933636}
   timerText: {fileID: 1213328951}
   countdownTime: 3
-  prep_time: 15
+  prep_time: 2
   combat_time: 60
   win_time: 15
   round_win_time: 4

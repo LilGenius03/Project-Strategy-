@@ -65,7 +65,7 @@ public class PlayerState_Defend : PlayerState_Base
                     currentPosition.z = controller.defenseGrid.playable_space_y_min;
             }
 
-            Debug.Log(currentPosition);
+            //Debug.Log(currentPosition);
 
             controller.current_grid_space = controller.defenseGrid.FindSpace(currentPosition);
 
