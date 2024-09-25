@@ -3148,6 +3148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 0
   player_owner: {fileID: 0}
+  player_start_pos: {x: 0, y: 0, z: 0}
   gridSpaces:
   - {fileID: 3556246538031710742}
   - {fileID: 1942308715}
@@ -3344,9 +3345,10 @@ MonoBehaviour:
   - {fileID: 862717606}
   - {fileID: 1783015821}
   - {fileID: 320850795}
-  playable_space_x: 20
-  playable_space_y: 19
-  debug_tower: {fileID: 1316139928487719502, guid: 84468c7e93234654fb632369d4206140, type: 3}
+  playable_space_x_min: 0
+  playable_space_x_max: 0
+  playable_space_y_min: 0
+  playable_space_y_max: 0
 --- !u!4 &354106681
 Transform:
   m_ObjectHideFlags: 0
@@ -10763,6 +10765,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPositions:
   - {fileID: 589815490}
+  target_castle: []
 --- !u!4 &1244491811
 Transform:
   m_ObjectHideFlags: 0
@@ -10991,6 +10994,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5d7229f645dc634896e51a121def34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  current_phase: 0
+  camera_p1: {fileID: 0}
+  camera_p2: {fileID: 0}
+  countdownText: {fileID: 0}
+  timerText: {fileID: 0}
+  countdownTime: 0
+  prep_time: 15
+  combat_time: 60
+  win_time: 15
+  round_win_time: 15
+  current_round: 0
+  max_rounds_needed: 0
+  p2_defending: 0
+  p1_score: 0
+  p2_score: 0
 --- !u!1001 &1277998090
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11162,6 +11180,7 @@ MonoBehaviour:
   spawnPositions:
   - {fileID: 1765703438}
   - {fileID: 345773311}
+  target_castle: []
 --- !u!4 &1294755682
 Transform:
   m_ObjectHideFlags: 0
@@ -15372,6 +15391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 0
   player_owner: {fileID: 0}
+  player_start_pos: {x: 0, y: 0, z: 0}
   gridSpaces:
   - {fileID: 832130548}
   - {fileID: 1428645091}
@@ -15413,9 +15433,10 @@ MonoBehaviour:
   - {fileID: 1826934096}
   - {fileID: 2035828738}
   - {fileID: 688301084}
-  playable_space_x: 4
-  playable_space_y: 10
-  debug_tower: {fileID: 1316139928487719502, guid: 84468c7e93234654fb632369d4206140, type: 3}
+  playable_space_x_min: 0
+  playable_space_x_max: 0
+  playable_space_y_min: 0
+  playable_space_y_max: 0
 --- !u!4 &1784138312
 Transform:
   m_ObjectHideFlags: 0
@@ -16504,9 +16525,11 @@ MonoBehaviour:
   player_attack_spawns:
   - {fileID: 1244491810}
   - {fileID: 1294755681}
+  player_unitses: []
   enemycastles:
   - {fileID: 1474469624}
   - {fileID: 5963250035649136048}
+  joinPrompts: []
 --- !u!114 &1942308715 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5081809419878282284, guid: a0de99c86eab4a346aea0d9ec5ab17dd, type: 3}
