@@ -29,9 +29,9 @@ public class DefenseGrid : MonoBehaviour
         return null;
     }
 
-    public void PlaceTower(grid_space space, GameObject tower)
+    public void PlaceTower(grid_space space, GameObject tower, int type_o_tower)
     {
-        if(space.type_of_space == 1 && space.current_tower == null)
+        if(space.type_of_space == type_o_tower && space.current_tower == null)
         {
             GameObject newTower = Instantiate(tower, space.transform.position, Quaternion.identity, transform);
             space.current_tower = newTower.GetComponent<Tower>();

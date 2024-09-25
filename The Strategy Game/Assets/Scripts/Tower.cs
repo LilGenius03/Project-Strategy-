@@ -7,6 +7,8 @@ public class Tower : MonoBehaviour
 {
     private Health health;
 
+    public int type_of_tower;
+
     private List<GameObject> targets = new List<GameObject>();
     public Transform current_target;
 
@@ -97,7 +99,11 @@ public class Tower : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawSphere(fire_pos.position, 0.1f);
+        if (fire_pos != null)
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawSphere(fire_pos.position, 0.1f);
+        }
+        
     }
 }

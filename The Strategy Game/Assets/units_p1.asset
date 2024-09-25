@@ -12,5 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f815a2eec409e924280098f87374a8b1, type: 3}
   m_Name: units_p1
   m_EditorClassIdentifier: 
-  tower_basic: {fileID: 1316139928487719502, guid: 84468c7e93234654fb632369d4206140, type: 3}
-  attacker_basic: {fileID: 4234291790501660461, guid: 99f86c71d40301f4aa001e7799080aae, type: 3}
+  defensive_units:
+  - {fileID: 1316139928487719502, guid: 84468c7e93234654fb632369d4206140, type: 3}
+  - {fileID: 1316139928487719502, guid: 0417423f4da16e74cb60f55403f75752, type: 3}
+  - {fileID: 1316139928487719502, guid: 14b284e461901d04aaaa964535810715, type: 3}
+  attacking_units:
+  - {fileID: 4234291790501660461, guid: 4da4d1246de25ec4488d94a0c049d837, type: 3}
+  - {fileID: 4234291790501660461, guid: 7a4a29aea2770b7418e85aa116baa487, type: 3}
+  - {fileID: 4234291790501660461, guid: 99f86c71d40301f4aa001e7799080aae, type: 3}

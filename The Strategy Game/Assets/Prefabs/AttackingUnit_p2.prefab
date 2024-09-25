@@ -262,7 +262,7 @@ MonoBehaviour:
   speed: 0.5
   rate_of_fire: 2
   fire_delay: 0
-  attack_range: 3
+  attack_range: 2
 --- !u!114 &-5534224696020683872
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -107,6 +107,18 @@ public class PlayerController : MonoBehaviour
             currentState.OnButtonSouth(this, ctx);
     }
 
+    public void OnButtonWest(InputAction.CallbackContext ctx)
+    {
+        if (!freeze_movement)
+            currentState.OnButtonWest(this, ctx);
+    }
+
+    public void OnButtonEast(InputAction.CallbackContext ctx)
+    {
+        if (!freeze_movement)
+            currentState.OnButtonEast(this, ctx);
+    }
+
     public void SwitchState(int state)
     {
         currentState.ExitState(this);

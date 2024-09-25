@@ -38,6 +38,7 @@ public class PlayerState_Defend : PlayerState_Base
     {
         if (ctx.performed)
         {
+            Vector3 prev_pos = currentPosition;
             Vector2 input_vector = ctx.ReadValue<Vector2>();
             if(input_vector.x > 0.5f)
             {
@@ -67,14 +68,17 @@ public class PlayerState_Defend : PlayerState_Base
 
             //Debug.Log(currentPosition);
 
-            controller.current_grid_space = controller.defenseGrid.FindSpace(currentPosition);
+            grid_space spais = controller.defenseGrid.FindSpace(currentPosition);
 
-            if(controller.current_grid_space != null)
+            if (spais != null)
             {
+                controller.current_grid_space = spais;
                 currentPosition = controller.current_grid_space.transform.position;
 
-                            EvaluateGridSpace(controller); //TEMP
+                EvaluateGridSpace(controller); //TEMP
             }
+            else
+                currentPosition = prev_pos;
             
 
             controller.defendHelper.transform.position = new Vector3(currentPosition.x, 2.5f, currentPosition.z);
@@ -107,11 +111,39 @@ public class PlayerState_Defend : PlayerState_Base
         {
             if (controller.current_grid_space != null)
             {
-                controller.defenseGrid.PlaceTower(controller.current_grid_space, controller.units.tower_basic);
+                controller.defenseGrid.PlaceTower(controller.current_grid_space, controller.units.defensive_units[0], 1);
                 EvaluateGridSpace(controller); //TEMP
             }
            
         }
             
+    }
+
+    public override void OnButtonWest(PlayerController controller, InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            if (controller.current_grid_space != null)
+            {
+                controller.defenseGrid.PlaceTower(controller.current_grid_space, controller.units.defensive_units[1], 1);
+                EvaluateGridSpace(controller); //TEMP
+            }
+
+        }
+
+    }
+
+    public override void OnButtonEast(PlayerController controller, InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            if (controller.current_grid_space != null)
+            {
+                controller.defenseGrid.PlaceTower(controller.current_grid_space, controller.units.defensive_units[2], 2);
+                EvaluateGridSpace(controller); //TEMP
+            }
+
+        }
+
     }
 }

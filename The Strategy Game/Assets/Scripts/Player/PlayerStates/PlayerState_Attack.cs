@@ -63,7 +63,39 @@ public class PlayerState_Attack : PlayerState_Base
         {
             if (!controller.isPrepping)
             {
-                GameObject littleDude = controller.HelpInstantiate(controller.units.attacker_basic, controller.attack_spawn.spawnPositions[currentSpawnPosition].position, Quaternion.identity, controller.attack_spawn.spawnPositions[currentSpawnPosition]);
+                GameObject littleDude = controller.HelpInstantiate(controller.units.attacking_units[0], controller.attack_spawn.spawnPositions[currentSpawnPosition].position, Quaternion.identity, controller.attack_spawn.spawnPositions[currentSpawnPosition]);
+                littleDude.GetComponent<AttackingDude>().AddCastleAsTarget(controller.attack_spawn.target_castle[currentSpawnPosition]);
+            }
+            else
+            {
+                //buy some dude
+            }
+        }
+    }
+
+    public override void OnButtonWest(PlayerController controller, InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            if (!controller.isPrepping)
+            {
+                GameObject littleDude = controller.HelpInstantiate(controller.units.attacking_units[1], controller.attack_spawn.spawnPositions[currentSpawnPosition].position, Quaternion.identity, controller.attack_spawn.spawnPositions[currentSpawnPosition]);
+                littleDude.GetComponent<AttackingDude>().AddCastleAsTarget(controller.attack_spawn.target_castle[currentSpawnPosition]);
+            }
+            else
+            {
+                //buy some dude
+            }
+        }
+    }
+
+    public override void OnButtonEast(PlayerController controller, InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            if (!controller.isPrepping)
+            {
+                GameObject littleDude = controller.HelpInstantiate(controller.units.attacking_units[2], controller.attack_spawn.spawnPositions[currentSpawnPosition].position, Quaternion.identity, controller.attack_spawn.spawnPositions[currentSpawnPosition]);
                 littleDude.GetComponent<AttackingDude>().AddCastleAsTarget(controller.attack_spawn.target_castle[currentSpawnPosition]);
             }
             else
