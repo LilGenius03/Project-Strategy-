@@ -156,6 +156,11 @@ MonoBehaviour:
   attack_spawn: {fileID: 0}
   enemyCastle: {fileID: 0}
   attackHelper: {fileID: 4638372164515308651}
+  men: 0
+  menMax: 10
+  gold: 0
+  goldT: {fileID: 0}
+  menT: {fileID: 0}
 --- !u!1 &2511400329946415980
 GameObject:
   m_ObjectHideFlags: 0

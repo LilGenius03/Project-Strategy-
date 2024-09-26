@@ -326,6 +326,7 @@ MonoBehaviour:
   OnDie:
     m_PersistentCalls:
       m_Calls: []
+  pID: 1
   max_health: 1
   healthMeshes:
   - {fileID: 6149513953234950788}

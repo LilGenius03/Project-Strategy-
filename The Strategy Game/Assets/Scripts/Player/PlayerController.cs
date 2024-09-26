@@ -1,3 +1,5 @@
+using TMPro;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -33,6 +35,13 @@ public class PlayerController : MonoBehaviour
     public AttackSpawn attack_spawn;
     public Transform enemyCastle;
     public GameObject attackHelper;
+
+    public int men;
+    public int menMax;
+    public int gold;
+
+    public TextMeshProUGUI goldT;
+    public TextMeshProUGUI menT;
 
     private void Awake()
     {
@@ -84,8 +93,43 @@ public class PlayerController : MonoBehaviour
         currentState.EnterState(this);
     }
 
+    public void ResetMen()
+    {
+        men = menMax;
+    }
+
+    public void LooseMan()
+    {
+        men--;
+    }
+
+    public bool HasMen()
+    {
+        return men > 0;
+    }
+
+    public void LooseGold(int g)
+    {
+        gold-=g;
+    }
+    public void AddGold(int g)
+    {
+        gold+=g;
+    }
+    public bool HasGold()
+    {
+        return gold > 0;
+    }
+
+    void UImanage()
+    {
+        goldT.text = "Gold: " + gold;
+        menT.text = "Men: " + men + "/" + menMax;
+    }
+
     private void Update()
     {
+        UImanage();
         currentState.FrameUpdate(this);
     }
 

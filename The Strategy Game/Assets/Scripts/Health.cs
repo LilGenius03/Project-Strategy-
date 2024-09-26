@@ -5,6 +5,9 @@ public class Health : MonoBehaviour
 {
     public UnityEvent OnHeal, OnTakeDamage, OnDie;
 
+    GameObject otherPlayer;
+    public int pID;
+
     [SerializeField] float max_health = 10;
     private float current_health;
 
@@ -14,6 +17,7 @@ public class Health : MonoBehaviour
     private void Start()
     {
         current_health = max_health;
+        otherPlayer = PlayerManager.instance.players[pID].gameObject;
     }
 
     public void Heal(float amount)
@@ -38,6 +42,10 @@ public class Health : MonoBehaviour
 
     public void Die()
     {
+        if (otherPlayer != null)
+        {
+            otherPlayer.GetComponent<PlayerController>().AddGold(20);
+        }
         OnDie.Invoke();
         Destroy(gameObject);
     }

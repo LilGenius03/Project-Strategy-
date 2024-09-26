@@ -111,8 +111,13 @@ public class PlayerState_Defend : PlayerState_Base
         {
             if (controller.current_grid_space != null)
             {
-                controller.defenseGrid.PlaceTower(controller.current_grid_space, controller.units.defensive_units[0], 1);
-                EvaluateGridSpace(controller); //TEMP
+                if (controller.HasMen())
+                {
+                    controller.LooseMan();
+                    controller.defenseGrid.PlaceTower(controller.current_grid_space, controller.units.defensive_units[0], 1);
+                    EvaluateGridSpace(controller);//TEMP
+                }
+                 //TEMP
             }
            
         }
@@ -125,8 +130,14 @@ public class PlayerState_Defend : PlayerState_Base
         {
             if (controller.current_grid_space != null)
             {
-                controller.defenseGrid.PlaceTower(controller.current_grid_space, controller.units.defensive_units[1], 1);
-                EvaluateGridSpace(controller); //TEMP
+                if (controller.HasMen() && controller.HasGold())
+                {
+                    controller.LooseMan();
+                    controller.LooseGold(10);
+                    controller.defenseGrid.PlaceTower(controller.current_grid_space, controller.units.defensive_units[1], 1);
+                    EvaluateGridSpace(controller);//TEMP
+                }
+                 //TEMP
             }
 
         }
@@ -139,8 +150,14 @@ public class PlayerState_Defend : PlayerState_Base
         {
             if (controller.current_grid_space != null)
             {
-                controller.defenseGrid.PlaceTower(controller.current_grid_space, controller.units.defensive_units[2], 2);
-                EvaluateGridSpace(controller); //TEMP
+                if (controller.HasMen() && controller.HasGold())
+                {
+                    controller.LooseMan();
+                    controller.LooseGold(10);
+                    controller.defenseGrid.PlaceTower(controller.current_grid_space, controller.units.defensive_units[2], 2);
+                    EvaluateGridSpace(controller);//TEMP
+                }
+                 //TEMP
             }
 
         }
