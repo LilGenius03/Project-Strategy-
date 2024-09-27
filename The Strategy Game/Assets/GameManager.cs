@@ -58,8 +58,8 @@ public class GameManager : MonoBehaviour
 
     public bool p2_defending;
 
-    public int p1_score;
-    public int p2_score;
+    public static int p1_score;
+    public static int p2_score;
 
     //SHITE - WILL IT JUST BE TEMP? PROBS NOT 
 
@@ -222,7 +222,14 @@ public class GameManager : MonoBehaviour
         OnRoundOver?.Invoke(round_winner);
 
         yield return new WaitForSecondsRealtime(round_win_time);
-        End_Game(round_winner);   
+        if(p1_score == max_rounds_needed)
+            End_Game(round_winner);
+        else if(p2_score == max_rounds_needed)
+            End_Game(round_winner);
+        else
+        {
+            //New Round Stuff
+        }
     }
 
     void End_Game(int game_winner)

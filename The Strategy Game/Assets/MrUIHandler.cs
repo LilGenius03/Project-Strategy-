@@ -60,8 +60,8 @@ public class MrUIHandler : MonoBehaviour
     public void Handle_RoundOver(int winner)
     {
         OnRoundOver.Invoke(winner);
-        score_p1.text = GameManager.instance.p1_score.ToString();
-        score_p2.text = GameManager.instance.p2_score.ToString();
+        score_p1.text = GameManager.p1_score.ToString();
+        score_p2.text = GameManager.p2_score.ToString();
         round_win_text.text = "Player " + (winner + 1);
     }
 
