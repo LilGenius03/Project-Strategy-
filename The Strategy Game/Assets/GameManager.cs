@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum GamePhases
 {
@@ -52,6 +53,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] float win_time = 15f;
     [SerializeField] float round_win_time = 15f;
 
+    public int current_level;
+
+
     public int current_round;
     public int max_rounds_needed;
     private Coroutine combat_coroutine;
@@ -87,6 +91,22 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void RanLevel()
+    {
+        int ran_lvl = Random.Range(1, 4);
+        while (ran_lvl == current_level)
+        {
+            ran_lvl = Random.Range(1, 4);
+        }
+        LoadLevel(ran_lvl);
+    }
+
+    public void LoadLevel(int lvl)
+    {
+        current_level = lvl;
+        SceneManager.LoadScene(lvl);
     }
 
     void SwitchSides()
@@ -228,7 +248,7 @@ public class GameManager : MonoBehaviour
             End_Game(round_winner);
         else
         {
-            //New Round Stuff
+            RanLevel();
         }
     }
 
