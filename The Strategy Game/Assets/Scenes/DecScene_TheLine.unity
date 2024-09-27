@@ -7583,11 +7583,11 @@ MonoBehaviour:
   combat_time: 60
   win_time: 15
   round_win_time: 4
+  current_level: 0
   current_round: 0
   max_rounds_needed: 3
   p2_defending: 1
-  p1_score: 0
-  p2_score: 0
+  controller: {fileID: 0}
 --- !u!1001 &1270095928
 PrefabInstance:
   m_ObjectHideFlags: 0

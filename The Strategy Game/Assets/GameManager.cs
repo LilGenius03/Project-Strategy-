@@ -65,6 +65,8 @@ public class GameManager : MonoBehaviour
     public static int p1_score;
     public static int p2_score;
 
+    public PlayerController controller;
+
     //SHITE - WILL IT JUST BE TEMP? PROBS NOT 
 
 
@@ -139,12 +141,14 @@ public class GameManager : MonoBehaviour
             camera_p1.SetActive(false);
             camera_p2.SetActive(true);
             PlayerManager.instance.SetDefending(true);
+            controller = PlayerManager.instance.players[0].GetComponent<PlayerController>();
         }
         else
         {
             camera_p2.SetActive(false);
             camera_p1.SetActive(true);
             PlayerManager.instance.SetDefending(false);
+            controller = PlayerManager.instance.players[1].GetComponent<PlayerController>();
         }
 
 
@@ -198,12 +202,16 @@ public class GameManager : MonoBehaviour
 
         countdownTime = combat_time;
         timerText.gameObject.SetActive(true);
-        while (countdownTime > 3f)
+        GameObject[] units = GameObject.FindGameObjectsWithTag("attack_unit");
+        while (countdownTime > 3f && (controller.HasPurMen() || units.Length > 0))
         {
+            units = GameObject.FindGameObjectsWithTag("attack_unit");
+            Debug.Log(units.Length + " " + controller.HasPurMen());
             timerText.text = countdownTime.ToString();
             yield return new WaitForSecondsRealtime(1f);
             countdownTime--;
         }
+        countdownTime = 3f;
         countdownText.gameObject.SetActive(true);
         while (countdownTime > 0)
         {

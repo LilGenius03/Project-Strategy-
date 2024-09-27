@@ -64,15 +64,19 @@ public class PlayerState_Attack : PlayerState_Base
             if (!controller.isPrepping)
             {
                 
-                if (controller.HasMen())
+                if (controller.HasPurMen())
                 {
-                    controller.LooseMan();
+                    controller.LoosePurMan();
                     GameObject littleDude = controller.HelpInstantiate(controller.units.attacking_units[0], controller.attack_spawn.spawnPositions[currentSpawnPosition].position, Quaternion.identity, controller.attack_spawn.spawnPositions[currentSpawnPosition]);
                     littleDude.GetComponent<AttackingDude>().AddCastleAsTarget(controller.attack_spawn.target_castle[currentSpawnPosition]);
                 }
             }
             else
             {
+                if(controller.HasMen())
+                {
+                    controller.LooseMan();
+                }
                 //buy some dude
             }
         }
@@ -85,9 +89,9 @@ public class PlayerState_Attack : PlayerState_Base
             if (!controller.isPrepping)
             {
                 
-                if (controller.HasMen() && controller.HasGold())
+                if (controller.HasPurMen() && controller.HasGold())
                 {
-                    controller.LooseMan();
+                    controller.LoosePurMan();
                     controller.LooseGold(10);
                     GameObject littleDude = controller.HelpInstantiate(controller.units.attacking_units[1], controller.attack_spawn.spawnPositions[currentSpawnPosition].position, Quaternion.identity, controller.attack_spawn.spawnPositions[currentSpawnPosition]);
                     littleDude.GetComponent<AttackingDude>().AddCastleAsTarget(controller.attack_spawn.target_castle[currentSpawnPosition]);
@@ -106,9 +110,9 @@ public class PlayerState_Attack : PlayerState_Base
         {
             if (!controller.isPrepping)
             {
-                if (controller.HasMen() && controller.HasGold())
+                if (controller.HasPurMen() && controller.HasGold())
                 {
-                    controller.LooseMan();
+                    controller.LoosePurMan();
                     controller.LooseGold(10);
                     GameObject littleDude = controller.HelpInstantiate(controller.units.attacking_units[2], controller.attack_spawn.spawnPositions[currentSpawnPosition].position, Quaternion.identity, controller.attack_spawn.spawnPositions[currentSpawnPosition]);
                     littleDude.GetComponent<AttackingDude>().AddCastleAsTarget(controller.attack_spawn.target_castle[currentSpawnPosition]);

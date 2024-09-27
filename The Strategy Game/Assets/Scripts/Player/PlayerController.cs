@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
 
     public int men;
     public int menMax;
+    int purchasedMen;
     public int gold;
 
     public TextMeshProUGUI goldT;
@@ -96,16 +97,28 @@ public class PlayerController : MonoBehaviour
     public void ResetMen()
     {
         men = menMax;
+        purchasedMen = 0;
     }
 
     public void LooseMan()
     {
         men--;
+        purchasedMen++;
+    }
+
+    public void LoosePurMan()
+    {
+        purchasedMen--;
     }
 
     public bool HasMen()
     {
         return men > 0;
+    }
+
+    public bool HasPurMen()
+    {
+        return purchasedMen > 0;
     }
 
     public void LooseGold(int g)
