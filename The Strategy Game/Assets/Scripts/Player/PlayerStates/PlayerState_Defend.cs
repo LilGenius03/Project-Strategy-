@@ -6,6 +6,7 @@ public class PlayerState_Defend : PlayerState_Base
 {
     public Vector3 currentPosition;
 
+
     public override void EnterState(PlayerController controller)
     {
         controller.defendHelper.SetActive(true);
