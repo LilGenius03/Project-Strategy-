@@ -67,18 +67,20 @@ public class PlayerState_Attack : PlayerState_Base
             if (!controller.isPrepping)
             {
                 
-                if (controller.HasPurMen())
+                if (controller.attack_units[0] > 0)
                 {
-                    controller.LoosePurMan();
+                    //controller.LoosePurMan();
+                    controller.attack_units[0]--;
                     GameObject littleDude = controller.HelpInstantiate(controller.units.attacking_units[0], controller.attack_spawn.spawnPositions[currentSpawnPosition].position, Quaternion.identity, controller.attack_spawn.spawnPositions[currentSpawnPosition]);
                     littleDude.GetComponent<AttackingDude>().AddCastleAsTarget(controller.attack_spawn.target_castle[currentSpawnPosition]);
                 }
             }
             else
             {
-                if(controller.HasMen())
+                if(controller.HasGold())
                 {
-                    controller.LooseMan();
+                    controller.attack_units[0]++;
+                    controller.LooseGold(10);
                 }
                 //buy some dude
             }
@@ -92,21 +94,20 @@ public class PlayerState_Attack : PlayerState_Base
             if (!controller.isPrepping)
             {
                 
-                if (controller.HasPurMen() && heavyAs > 0)
+                if (controller.attack_units[1] > 0)
                 {
-                    controller.LoosePurMan();
-                    heavyAs--;
+                    //controller.LoosePurMan();
+                    controller.attack_units[1]--;
                     GameObject littleDude = controller.HelpInstantiate(controller.units.attacking_units[1], controller.attack_spawn.spawnPositions[currentSpawnPosition].position, Quaternion.identity, controller.attack_spawn.spawnPositions[currentSpawnPosition]);
                     littleDude.GetComponent<AttackingDude>().AddCastleAsTarget(controller.attack_spawn.target_castle[currentSpawnPosition]);
                 }
             }
             else
             {
-                if (controller.HasMen() && controller.HasGold())
+                if (controller.HasGold())
                 {
-                    heavyAs++;
+                    controller.attack_units[1]++;
                     controller.LooseGold(10);
-                    controller.LooseMan();
                 }
                 //buy some dude
             }
@@ -119,10 +120,10 @@ public class PlayerState_Attack : PlayerState_Base
         {
             if (!controller.isPrepping)
             {
-                if (controller.HasPurMen() && lightAs > 0)
+                if (controller.attack_units[2] > 0)
                 {
-                    controller.LoosePurMan();
-                    lightAs--;
+                    //controller.LoosePurMan();
+                    controller.attack_units[2]--;
                     GameObject littleDude = controller.HelpInstantiate(controller.units.attacking_units[2], controller.attack_spawn.spawnPositions[currentSpawnPosition].position, Quaternion.identity, controller.attack_spawn.spawnPositions[currentSpawnPosition]);
                     littleDude.GetComponent<AttackingDude>().AddCastleAsTarget(controller.attack_spawn.target_castle[currentSpawnPosition]);
                 }
@@ -130,11 +131,11 @@ public class PlayerState_Attack : PlayerState_Base
             }
             else
             {
-                if (controller.HasMen() && controller.HasGold())
+                if (controller.HasGold())
                 {
-                    lightAs++;
+                    controller.attack_units[2]++;
                     controller.LooseGold(10);
-                    controller.LooseMan();
+                    //controller.LooseMan();
                 }
                 //buy some dude
             }

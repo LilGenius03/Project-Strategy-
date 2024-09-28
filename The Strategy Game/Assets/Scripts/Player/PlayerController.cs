@@ -37,7 +37,9 @@ public class PlayerController : MonoBehaviour
     public GameObject attackHelper;
 
     public int men;
-    public int menMax;
+    public int[] attack_units = new int[3]; // 0 - standard, 1 - bigguy, 2 - runner
+    public int[] defend_units = new int[3]; // 0 - standard, 1 - bomber, 2 - obstacle
+    //public int menMax;
     int purchasedMen;
     public int gold;
 
@@ -96,7 +98,6 @@ public class PlayerController : MonoBehaviour
 
     public void ResetMen()
     {
-        men = menMax;
         purchasedMen = 0;
     }
 
@@ -137,12 +138,12 @@ public class PlayerController : MonoBehaviour
     void UImanage()
     {
         goldT.text = "Gold: " + gold;
-        menT.text = "Men: " + men + "/" + menMax;
+        menT.text = "Men: " + men;
     }
 
     private void Update()
     {
-        UImanage();
+        //UImanage();
         currentState.FrameUpdate(this);
     }
 

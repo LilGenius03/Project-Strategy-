@@ -12,6 +12,8 @@ public class PlayerManager : MonoBehaviour
     public DefenseGrid[] player_grids;
     public AttackSpawn[] player_attack_spawns;
     public UnitHelper[] player_unitses;
+    public GameObject[] p1_ui;
+    public GameObject[] p2_ui; 
     public TextMeshProUGUI[] men;
     public TextMeshProUGUI[] gold;
 

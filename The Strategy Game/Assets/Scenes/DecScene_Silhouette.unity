@@ -19990,11 +19990,11 @@ MonoBehaviour:
   combat_time: 60
   win_time: 15
   round_win_time: 4
+  current_level: 0
   current_round: 0
   max_rounds_needed: 3
   p2_defending: 0
-  p1_score: 0
-  p2_score: 0
+  controller: {fileID: 0}
 --- !u!1 &1269999036
 GameObject:
   m_ObjectHideFlags: 0
@@ -24328,6 +24328,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 213528633242536472, guid: 1aa05e7abfc03c74db1fa73f5f5bbc5a, type: 3}
+      propertyPath: isCastle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 213528633242536472, guid: 1aa05e7abfc03c74db1fa73f5f5bbc5a, type: 3}
       propertyPath: healthColorGradient.key0.b
       value: 0.32941177
@@ -31971,6 +31975,8 @@ MonoBehaviour:
   player_unitses:
   - {fileID: 11400000, guid: 903d445423ace0548a81fb846863cb96, type: 2}
   - {fileID: 11400000, guid: f39e6e3cf47ddcb4a8cf2ea00090d3fe, type: 2}
+  men: []
+  gold: []
   enemycastles:
   - {fileID: 1474469624}
   - {fileID: 5963250035649136048}
@@ -35552,6 +35558,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 213528633242536472, guid: 1aa05e7abfc03c74db1fa73f5f5bbc5a, type: 3}
+      propertyPath: isCastle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 213528633242536472, guid: 1aa05e7abfc03c74db1fa73f5f5bbc5a, type: 3}
       propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.size
       value: 1

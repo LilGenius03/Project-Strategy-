@@ -11,13 +11,16 @@ public class Health : MonoBehaviour
     [SerializeField] float max_health = 10;
     private float current_health;
 
+    [SerializeField] bool isCastle;
+
     [SerializeField] MeshRenderer[] healthMeshes; //temp
     [SerializeField] Gradient healthColorGradient;
 
     private void Start()
     {
         current_health = max_health;
-        otherPlayer = PlayerManager.instance.players[pID].gameObject;
+        if(!isCastle)
+            otherPlayer = PlayerManager.instance.players[pID].gameObject;
     }
 
     public void Heal(float amount)

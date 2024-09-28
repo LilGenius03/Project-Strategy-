@@ -202,11 +202,11 @@ public class GameManager : MonoBehaviour
 
         countdownTime = combat_time;
         timerText.gameObject.SetActive(true);
-        GameObject[] units = GameObject.FindGameObjectsWithTag("attack_unit");
-        while (countdownTime > 3f && (controller.HasPurMen() || units.Length > 0))
+        //GameObject[] units = GameObject.FindGameObjectsWithTag("attack_unit");
+        while (countdownTime > 3f /*&& (controller.HasPurMen()|| units.Length > 0)*/)
         {
-            units = GameObject.FindGameObjectsWithTag("attack_unit");
-            Debug.Log(units.Length + " " + controller.HasPurMen());
+            //units = GameObject.FindGameObjectsWithTag("attack_unit");
+            //Debug.Log(units.Length + " " + controller.HasPurMen());
             timerText.text = countdownTime.ToString();
             yield return new WaitForSecondsRealtime(1f);
             countdownTime--;
