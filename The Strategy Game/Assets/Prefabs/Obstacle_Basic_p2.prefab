@@ -57,7 +57,11 @@ MonoBehaviour:
   OnDie:
     m_PersistentCalls:
       m_Calls: []
+  pID: 0
   max_health: 10
+  dmg_gold: 1
+  death_gold: 10
+  isCastle: 0
   healthMeshes:
   - {fileID: 6521355533406256596}
   healthColorGradient:
@@ -191,7 +195,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 62662a55c385efa4daf9b6e7ebf9f1d0, type: 2}
+  - {fileID: 2100000, guid: cff4e8115c4cd4c4f841dbc783fe7506, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

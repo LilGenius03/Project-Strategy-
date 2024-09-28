@@ -12,10 +12,7 @@ public class PlayerManager : MonoBehaviour
     public DefenseGrid[] player_grids;
     public AttackSpawn[] player_attack_spawns;
     public UnitHelper[] player_unitses;
-    public GameObject[] p1_ui;
-    public GameObject[] p2_ui; 
-    public TextMeshProUGUI[] men;
-    public TextMeshProUGUI[] gold;
+    public PlayerUI[] player_uis;
 
     private PlayerInputManager playerInputManager;
 
@@ -72,8 +69,7 @@ public class PlayerManager : MonoBehaviour
         controller.attack_spawn = player_attack_spawns[players.Count - 1];
         controller.enemyCastle = enemycastles[players.Count - 1];
         controller.units = player_unitses[players.Count - 1];
-        controller.goldT = gold[players.Count - 1];
-        controller.menT = men[players.Count - 1];
+        controller.my_ui = player_uis[players.Count - 1];
 
         OnPlayerHasJoined.Invoke(players.Count);
 
@@ -107,13 +103,16 @@ public class PlayerManager : MonoBehaviour
         {
             controller_p1.SwitchState(2);
             controller_p2.SwitchState(1);
-            controller_p1.ResetMen();
-            controller_p2.ResetMen();
+
+            controller_p2.AddGold(GameManager.instance.GoldToGive(true));
+            controller_p1.AddGold(GameManager.instance.GoldToGive(false));
         }
         else
         {
             controller_p2.SwitchState(2);
             controller_p1.SwitchState(1);
+            controller_p1.AddGold(GameManager.instance.GoldToGive(true));
+            controller_p2.AddGold(GameManager.instance.GoldToGive(false));
         }
     }
 }

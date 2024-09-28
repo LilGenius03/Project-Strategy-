@@ -41,13 +41,14 @@ public class PlayerController : MonoBehaviour
 
     public int men;
     public int[] attack_units = new int[3]; // 0 - standard, 1 - bigguy, 2 - runner
+    public int[] attack_units_cost = new int[3]; // 0 - standard, 1 - bigguy, 2 - runner
     public int[] defend_units = new int[3]; // 0 - standard, 1 - bomber, 2 - obstacle
+    public int[] defend_units_cost = new int[3]; // 0 - standard, 1 - bomber, 2 - obstacle
     //public int menMax;
     int purchasedMen;
     public int gold;
 
-    public TextMeshProUGUI goldT;
-    public TextMeshProUGUI menT;
+    public PlayerUI my_ui;
 
     private void Awake()
     {
@@ -140,12 +141,12 @@ public class PlayerController : MonoBehaviour
 
     public void UImanage()
     {
-        OnManagePlayerUI.Invoke(gold, attack_units, defend_units);
+        my_ui.ManagePlayerUI(gold, attack_units, defend_units);
     }
 
     private void Update()
     {
-        //UImanage();
+        UImanage();
         currentState.FrameUpdate(this);
     }
 

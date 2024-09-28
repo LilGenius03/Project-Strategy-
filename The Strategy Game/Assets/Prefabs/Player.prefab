@@ -157,10 +157,12 @@ MonoBehaviour:
   enemyCastle: {fileID: 0}
   attackHelper: {fileID: 4638372164515308651}
   men: 0
-  menMax: 10
+  attack_units: 000000000000000000000000
+  attack_units_cost: 0a000000140000000f000000
+  defend_units: 000000000000000000000000
+  defend_units_cost: 140000001e00000032000000
   gold: 50
-  goldT: {fileID: 0}
-  menT: {fileID: 0}
+  my_ui: {fileID: 0}
 --- !u!1 &2511400329946415980
 GameObject:
   m_ObjectHideFlags: 0

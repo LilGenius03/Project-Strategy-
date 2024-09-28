@@ -59,6 +59,9 @@ MonoBehaviour:
       m_Calls: []
   pID: 1
   max_health: 10
+  dmg_gold: 1
+  death_gold: 10
+  isCastle: 0
   healthMeshes:
   - {fileID: 6521355533406256596}
   healthColorGradient:

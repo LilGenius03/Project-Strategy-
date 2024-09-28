@@ -18,6 +18,8 @@ public class PlayerState_Defend : PlayerState_Base
 
         currentPosition = controller.current_grid_space.transform.position;
         controller.defendHelper.transform.position = new Vector3(currentPosition.x, 2.5f, currentPosition.z);
+
+        controller.my_ui.SwitchUI(false);
     }
 
     public override void ExitState(PlayerController controller)
@@ -110,7 +112,7 @@ public class PlayerState_Defend : PlayerState_Base
     {
         if (ctx.performed)
         {
-            if (controller.current_grid_space != null)
+/*            if (controller.current_grid_space != null)
             {
                 if (controller.HasMen())
                 {
@@ -119,8 +121,31 @@ public class PlayerState_Defend : PlayerState_Base
                     EvaluateGridSpace(controller);//TEMP
                 }
                  //TEMP
+            }*/
+
+            if (!controller.isPrepping)
+            {
+
+                if (controller.defend_units[0] > 0)
+                {
+                    if (controller.current_grid_space != null)
+                    {
+                            controller.defend_units[0]--;
+                            controller.defenseGrid.PlaceTower(controller.current_grid_space, controller.units.defensive_units[0], 1);
+                            EvaluateGridSpace(controller);//TEMP
+                    }
+                }
             }
-           
+            else
+            {
+                if (controller.gold >= controller.defend_units_cost[0])
+                {
+                    controller.defend_units[0]++;
+                    controller.LooseGold(controller.defend_units_cost[0]);
+                }
+                //buy some dude
+            }
+
         }
             
     }
@@ -129,16 +154,27 @@ public class PlayerState_Defend : PlayerState_Base
     {
         if (ctx.performed)
         {
-            if (controller.current_grid_space != null)
+            if (!controller.isPrepping)
             {
-                if (controller.HasMen() && controller.HasGold())
+
+                if (controller.defend_units[1] > 0)
                 {
-                    controller.LooseMan();
-                    controller.LooseGold(10);
-                    controller.defenseGrid.PlaceTower(controller.current_grid_space, controller.units.defensive_units[1], 1);
-                    EvaluateGridSpace(controller);//TEMP
+                    if (controller.current_grid_space != null)
+                    {
+                        controller.defend_units[1]--;
+                        controller.defenseGrid.PlaceTower(controller.current_grid_space, controller.units.defensive_units[1], 1);
+                        EvaluateGridSpace(controller);//TEMP
+                    }
                 }
-                 //TEMP
+            }
+            else
+            {
+                if (controller.gold >= controller.defend_units_cost[1])
+                {
+                    controller.defend_units[1]++;
+                    controller.LooseGold(controller.defend_units_cost[1]);
+                }
+                //buy some dude
             }
 
         }
@@ -149,16 +185,27 @@ public class PlayerState_Defend : PlayerState_Base
     {
         if (ctx.performed)
         {
-            if (controller.current_grid_space != null)
+            if (!controller.isPrepping)
             {
-                if (controller.HasMen() && controller.HasGold())
+
+                if (controller.defend_units[2] > 0)
                 {
-                    controller.LooseMan();
-                    controller.LooseGold(10);
-                    controller.defenseGrid.PlaceTower(controller.current_grid_space, controller.units.defensive_units[2], 2);
-                    EvaluateGridSpace(controller);//TEMP
+                    if (controller.current_grid_space != null)
+                    {
+                        controller.defend_units[2]--;
+                        controller.defenseGrid.PlaceTower(controller.current_grid_space, controller.units.defensive_units[2], 2);
+                        EvaluateGridSpace(controller);//TEMP
+                    }
                 }
-                 //TEMP
+            }
+            else
+            {
+                if (controller.gold >= controller.defend_units_cost[2])
+                {
+                    controller.defend_units[2]++;
+                    controller.LooseGold(controller.defend_units_cost[2]);
+                }
+                //buy some dude
             }
 
         }

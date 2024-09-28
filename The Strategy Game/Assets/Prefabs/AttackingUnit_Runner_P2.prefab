@@ -326,7 +326,10 @@ MonoBehaviour:
   OnDie:
     m_PersistentCalls:
       m_Calls: []
+  pID: 0
   max_health: 1
+  death_gold: 1
+  isCastle: 0
   healthMeshes:
   - {fileID: 6149513953234950788}
   healthColorGradient:

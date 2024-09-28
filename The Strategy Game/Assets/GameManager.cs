@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
 
     public int current_level;
 
-
+    public int current_turn;
     public int current_round;
     public int max_rounds_needed;
     private Coroutine combat_coroutine;
@@ -93,6 +93,14 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public int GoldToGive(bool isDefending)
+    {
+        if(isDefending)
+            return 10 * current_turn;
+        else
+            return 20 * current_turn;
     }
 
     public void RanLevel()
@@ -133,6 +141,8 @@ public class GameManager : MonoBehaviour
     {
         current_phase = GamePhases.round_begin;
         current_round++;
+
+        current_turn++;
 
         OnFreezePlayers?.Invoke();
 

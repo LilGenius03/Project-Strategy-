@@ -145,7 +145,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   pID: 1
-  max_health: 10
+  max_health: 5
+  dmg_gold: 1
+  death_gold: 30
+  isCastle: 0
   healthMeshes:
   - {fileID: 6521355533406256596}
   healthColorGradient:

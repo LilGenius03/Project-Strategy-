@@ -286,6 +286,8 @@ MonoBehaviour:
       m_Calls: []
   pID: 1
   max_health: 5
+  death_gold: 1
+  isCastle: 0
   healthMeshes:
   - {fileID: 576281496441079205}
   - {fileID: 6568168359568596122}

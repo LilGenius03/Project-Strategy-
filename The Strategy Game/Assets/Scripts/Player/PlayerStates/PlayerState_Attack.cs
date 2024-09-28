@@ -14,6 +14,7 @@ public class PlayerState_Attack : PlayerState_Base
         controller.defendHelper.SetActive(false);
         controller.attackHelper.SetActive(true);
         controller.attackHelper.transform.position = controller.attack_spawn.spawnPositions[currentSpawnPosition].position;
+        controller.my_ui.SwitchUI(true);
     }
 
     public override void ExitState(PlayerController controller)
@@ -74,7 +75,7 @@ public class PlayerState_Attack : PlayerState_Base
             }
             else
             {
-                if(controller.HasGold())
+                if(controller.gold >= controller.attack_units_cost[0])
                 {
                     controller.attack_units[0]++;
                     controller.LooseGold(10);
@@ -101,10 +102,10 @@ public class PlayerState_Attack : PlayerState_Base
             }
             else
             {
-                if (controller.HasGold())
+                if (controller.gold >= controller.attack_units_cost[1])
                 {
                     controller.attack_units[1]++;
-                    controller.LooseGold(10);
+                    controller.LooseGold(controller.attack_units_cost[1]);
                 }
                 //buy some dude
             }
@@ -128,10 +129,10 @@ public class PlayerState_Attack : PlayerState_Base
             }
             else
             {
-                if (controller.HasGold())
+                if (controller.gold >= controller.attack_units_cost[2])
                 {
                     controller.attack_units[2]++;
-                    controller.LooseGold(10);
+                    controller.LooseGold(controller.attack_units_cost[2]);
                     //controller.LooseMan();
                 }
                 //buy some dude

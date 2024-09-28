@@ -5,11 +5,13 @@ public class Health : MonoBehaviour
 {
     public UnityEvent OnHeal, OnTakeDamage, OnDie;
 
-    GameObject otherPlayer;
+    PlayerController otherPlayer;
     public int pID;
 
     [SerializeField] float max_health = 10;
     private float current_health;
+
+    [SerializeField] int dmg_gold, death_gold;
 
     [SerializeField] bool isCastle;
 
@@ -20,7 +22,7 @@ public class Health : MonoBehaviour
     {
         current_health = max_health;
         if(!isCastle)
-            otherPlayer = PlayerManager.instance.players[pID].gameObject;
+            otherPlayer = PlayerManager.instance.players[pID].GetComponent<PlayerController>();
     }
 
     public void Heal(float amount)
@@ -37,7 +39,11 @@ public class Health : MonoBehaviour
         current_health = Mathf.Floor(current_health);
         SetHealthColor();
         OnTakeDamage.Invoke();
-        if(current_health <= 0)
+        if (otherPlayer != null)
+        {
+            otherPlayer.AddGold(dmg_gold);
+        }
+        if (current_health <= 0)
         {
             Die();
         }
@@ -45,11 +51,11 @@ public class Health : MonoBehaviour
 
     public void Die()
     {
+        OnDie.Invoke();
         if (otherPlayer != null)
         {
-            otherPlayer.GetComponent<PlayerController>().AddGold(20);
+            otherPlayer.AddGold(death_gold);
         }
-        OnDie.Invoke();
         Destroy(gameObject);
     }
 
