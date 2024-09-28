@@ -9,9 +9,6 @@ public class PlayerState_Attack : PlayerState_Base
 
     bool isMoving;
 
-    int heavyAs = 0;
-    int lightAs = 0;
-
     public override void EnterState(PlayerController controller)
     {
         controller.defendHelper.SetActive(false);

@@ -12,6 +12,9 @@ public enum PlayerStates
 
 public class PlayerController : MonoBehaviour
 {
+    public delegate void ManagePlayerUI(int ui_gold, int[] ui_attackunits, int[] ui_defendunits);
+    public static event ManagePlayerUI OnManagePlayerUI;
+
     public short id;
 
     public PlayerStates playerState;
@@ -135,10 +138,9 @@ public class PlayerController : MonoBehaviour
         return gold > 0;
     }
 
-    void UImanage()
+    public void UImanage()
     {
-        goldT.text = "Gold: " + gold;
-        menT.text = "Men: " + men;
+        OnManagePlayerUI.Invoke(gold, attack_units, defend_units);
     }
 
     private void Update()
