@@ -18,6 +18,7 @@ public class PlayerState_Defend : PlayerState_Base
 
         currentPosition = controller.current_grid_space.transform.position;
         controller.defendHelper.transform.position = new Vector3(currentPosition.x, 2.5f, currentPosition.z);
+        EvaluateGridSpace(controller);
 
         controller.my_ui.SwitchUI(false);
     }
@@ -97,13 +98,16 @@ public class PlayerState_Defend : PlayerState_Base
                 controller.defendHelperMR.material.SetColor("_EmissionColor", Color.red);
                 break;
             case 1:
-                if(controller.current_grid_space.current_tower != null)
+                if(controller.current_grid_space.current_tower != null || (controller.defend_units[0] == 0 && controller.defend_units[1] == 0))
                     controller.defendHelperMR.material.SetColor("_EmissionColor", Color.red);
                 else
                     controller.defendHelperMR.material.SetColor("_EmissionColor", Color.yellow); 
                 break;
             case 2:
-                controller.defendHelperMR.material.SetColor("_EmissionColor", Color.red);
+                if (controller.current_grid_space.current_tower != null || controller.defend_units[2] == 0)
+                    controller.defendHelperMR.material.SetColor("_EmissionColor", Color.red);
+                else
+                    controller.defendHelperMR.material.SetColor("_EmissionColor", Color.yellow);
                 break;
         }
     }
@@ -132,7 +136,6 @@ public class PlayerState_Defend : PlayerState_Base
                     {
                             controller.defend_units[0]--;
                             controller.defenseGrid.PlaceTower(controller.current_grid_space, controller.units.defensive_units[0], 1);
-                            EvaluateGridSpace(controller);//TEMP
                     }
                 }
             }
@@ -145,7 +148,7 @@ public class PlayerState_Defend : PlayerState_Base
                 }
                 //buy some dude
             }
-
+            EvaluateGridSpace(controller);
         }
             
     }
@@ -163,7 +166,6 @@ public class PlayerState_Defend : PlayerState_Base
                     {
                         controller.defend_units[1]--;
                         controller.defenseGrid.PlaceTower(controller.current_grid_space, controller.units.defensive_units[1], 1);
-                        EvaluateGridSpace(controller);//TEMP
                     }
                 }
             }
@@ -176,7 +178,7 @@ public class PlayerState_Defend : PlayerState_Base
                 }
                 //buy some dude
             }
-
+            EvaluateGridSpace(controller);
         }
 
     }
@@ -194,7 +196,6 @@ public class PlayerState_Defend : PlayerState_Base
                     {
                         controller.defend_units[2]--;
                         controller.defenseGrid.PlaceTower(controller.current_grid_space, controller.units.defensive_units[2], 2);
-                        EvaluateGridSpace(controller);//TEMP
                     }
                 }
             }
@@ -207,7 +208,7 @@ public class PlayerState_Defend : PlayerState_Base
                 }
                 //buy some dude
             }
-
+            EvaluateGridSpace(controller);
         }
 
     }
