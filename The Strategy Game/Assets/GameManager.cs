@@ -142,8 +142,6 @@ public class GameManager : MonoBehaviour
         current_phase = GamePhases.round_begin;
         current_round++;
 
-        current_turn++;
-
         OnFreezePlayers?.Invoke();
 
         if (p2_defending)
@@ -161,6 +159,7 @@ public class GameManager : MonoBehaviour
             controller = PlayerManager.instance.players[1].GetComponent<PlayerController>();
         }
 
+        current_turn++;
 
         countdownText.gameObject.SetActive(true);
         OnRoundBegin?.Invoke();
@@ -212,10 +211,10 @@ public class GameManager : MonoBehaviour
 
         countdownTime = combat_time;
         timerText.gameObject.SetActive(true);
-        GameObject[] units = GameObject.FindGameObjectsWithTag("attack_unit");
-        while (countdownTime > 3f && units.Length > 0)
+        //GameObject[] units = GameObject.FindGameObjectsWithTag("attack_unit");
+        while (countdownTime > 3f)
         {
-            units = GameObject.FindGameObjectsWithTag("attack_unit");
+            //units = GameObject.FindGameObjectsWithTag("attack_unit");
             //Debug.Log(units.Length + " " + controller.HasPurMen());
             timerText.text = countdownTime.ToString();
             yield return new WaitForSecondsRealtime(1f);

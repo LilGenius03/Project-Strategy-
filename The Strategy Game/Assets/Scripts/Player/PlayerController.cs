@@ -12,8 +12,6 @@ public enum PlayerStates
 
 public class PlayerController : MonoBehaviour
 {
-    public delegate void ManagePlayerUI(int ui_gold, int[] ui_attackunits, int[] ui_defendunits);
-    public static event ManagePlayerUI OnManagePlayerUI;
 
     public short id;
 
