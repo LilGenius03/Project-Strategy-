@@ -18,6 +18,8 @@ public class Health : MonoBehaviour
     [SerializeField] MeshRenderer[] healthMeshes; //temp
     [SerializeField] Gradient healthColorGradient;
 
+    bool isdead;
+
     private void Start()
     {
         current_health = max_health;
@@ -43,7 +45,7 @@ public class Health : MonoBehaviour
         {
             otherPlayer.AddGold(dmg_gold);
         }
-        if (current_health <= 0)
+        if (current_health <= 0 && !isdead)
         {
             Die();
         }
@@ -51,6 +53,7 @@ public class Health : MonoBehaviour
 
     public void Die()
     {
+        isdead = true;
         OnDie.Invoke();
         if (otherPlayer != null)
         {

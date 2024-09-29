@@ -65,7 +65,9 @@ public class GameManager : MonoBehaviour
     public static int p1_score;
     public static int p2_score;
 
-    public PlayerController controller;
+    public PlayerController p_attacker;
+
+    public int dead_ppl;
 
     //SHITE - WILL IT JUST BE TEMP? PROBS NOT 
 
@@ -149,20 +151,20 @@ public class GameManager : MonoBehaviour
             camera_p1.SetActive(false);
             camera_p2.SetActive(true);
             PlayerManager.instance.SetDefending(true);
-            controller = PlayerManager.instance.players[0].GetComponent<PlayerController>();
+            p_attacker = PlayerManager.instance.players[0].GetComponent<PlayerController>();
         }
         else
         {
             camera_p2.SetActive(false);
             camera_p1.SetActive(true);
-            PlayerManager.instance.SetDefending(false);
-            controller = PlayerManager.instance.players[1].GetComponent<PlayerController>();
+            p_attacker = PlayerManager.instance.players[1].GetComponent<PlayerController>();
         }
 
         current_turn++;
 
         countdownText.gameObject.SetActive(true);
         OnRoundBegin?.Invoke();
+        countdownTime = 3f;
         while (countdownTime > 0)
         {
             countdownText.text = countdownTime.ToString();
@@ -189,7 +191,7 @@ public class GameManager : MonoBehaviour
             countdownTime--;
         }
         countdownText.gameObject.SetActive(true);
-        while (countdownTime > 0)
+        while (countdownTime > 0 && countdownTime <= 3f)
         {
             timerText.text = countdownTime.ToString();
             countdownText.text = countdownTime.ToString();
@@ -216,13 +218,14 @@ public class GameManager : MonoBehaviour
         {
             //units = GameObject.FindGameObjectsWithTag("attack_unit");
             //Debug.Log(units.Length + " " + controller.HasPurMen());
+            Debug.Log("STIOLL RUNING");
             timerText.text = countdownTime.ToString();
             yield return new WaitForSecondsRealtime(1f);
             countdownTime--;
         }
         countdownTime = 3f;
         countdownText.gameObject.SetActive(true);
-        while (countdownTime > 0)
+        while (countdownTime > 0 && countdownTime <= 3f)
         {
             timerText.text = countdownTime.ToString();
             countdownText.text = countdownTime.ToString();
@@ -236,6 +239,18 @@ public class GameManager : MonoBehaviour
         OnCombatOver?.Invoke();
         OnFreezePlayers?.Invoke();
         SwitchSides();
+    }
+
+    public void SomeoneDied()
+    {
+        dead_ppl++;
+        if(dead_ppl == p_attacker.total_men)
+        {
+            StopCoroutine(combat_coroutine);
+            OnCombatOver?.Invoke();
+            OnFreezePlayers?.Invoke();
+            SwitchSides();
+        }
     }
 
     public void CastleDestroyed(int winner)

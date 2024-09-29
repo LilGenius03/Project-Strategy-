@@ -47,27 +47,27 @@ public class PlayerState_Defend : PlayerState_Base
             if(input_vector.x > 0.5f)
             {
                 currentPosition.x += Mathf.Ceil(input_vector.x);
-                if (currentPosition.x >= controller.defenseGrid.playable_space_x_max)
-                    currentPosition.x = controller.defenseGrid.playable_space_x_max - 1;
+                /*if (currentPosition.x >= controller.defenseGrid.playable_space_x_max)
+                    currentPosition.x = controller.defenseGrid.playable_space_x_max - 1;*/
             }
             else if (input_vector.x < -0.5f)
             {
                 currentPosition.x += Mathf.Floor(input_vector.x);
-                if (currentPosition.x <= controller.defenseGrid.playable_space_x_min)
-                    currentPosition.x = controller.defenseGrid.playable_space_x_min;
+                /*if (currentPosition.x <= controller.defenseGrid.playable_space_x_min)
+                    currentPosition.x = controller.defenseGrid.playable_space_x_min;*/
             }
                 
             if (input_vector.y > 0.5f)
             {
                 currentPosition.z += Mathf.Ceil(input_vector.y);
-                if (currentPosition.z >= controller.defenseGrid.playable_space_y_max)
-                    currentPosition.z = controller.defenseGrid.playable_space_y_max - 1;
+                /*if (currentPosition.z >= controller.defenseGrid.playable_space_y_max)
+                    currentPosition.z = controller.defenseGrid.playable_space_y_max - 1;*/
             }               
             else if (input_vector.y < -0.5f)
             {
                 currentPosition.z += Mathf.Floor(input_vector.y);
-                if (currentPosition.z <= controller.defenseGrid.playable_space_y_min)
-                    currentPosition.z = controller.defenseGrid.playable_space_y_min;
+                /*if (currentPosition.z <= controller.defenseGrid.playable_space_y_min)
+                    currentPosition.z = controller.defenseGrid.playable_space_y_min;*/
             }
 
             //Debug.Log(currentPosition);

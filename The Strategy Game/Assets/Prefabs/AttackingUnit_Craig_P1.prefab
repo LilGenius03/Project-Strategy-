@@ -283,9 +283,22 @@ MonoBehaviour:
       m_Calls: []
   OnDie:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1034942896605273425}
+        m_TargetAssemblyTypeName: AttackingDude, Assembly-CSharp
+        m_MethodName: I_Died
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   pID: 1
   max_health: 30
+  dmg_gold: 0
   death_gold: 2
   isCastle: 0
   healthMeshes:

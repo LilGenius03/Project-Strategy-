@@ -47,6 +47,11 @@ public class AttackingDude : MonoBehaviour
 
     }
 
+    public void I_Died()
+    {
+        GameManager.instance.SomeoneDied();
+    }
+
     public virtual void GetNextTarget()
     {
         targets.RemoveAll(x => !x);

@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
     int purchasedMen;
     public int gold;
 
+    public int total_men;
+
     public PlayerUI my_ui;
 
     private void Awake()
@@ -87,6 +89,7 @@ public class PlayerController : MonoBehaviour
     public void Switch2Combat()
     {
         isPrepping = false;
+        SetTotalMen();
     }
 
     private void Start()
@@ -112,6 +115,17 @@ public class PlayerController : MonoBehaviour
     public void LoosePurMan()
     {
         purchasedMen--;
+    }
+
+    public void SetTotalMen()
+    {
+        int i = 0;
+        foreach(int num in attack_units)
+        {
+            i += num;
+        }
+        Debug.Log(i);
+        total_men = i;
     }
 
     public bool HasMen()
