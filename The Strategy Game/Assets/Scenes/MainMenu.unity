@@ -1581,10 +1581,12 @@ MonoBehaviour:
   win_time: 15
   round_win_time: 15
   current_level: 0
+  current_turn: 0
   current_round: 0
   max_rounds_needed: 0
   p2_defending: 0
-  controller: {fileID: 0}
+  p_attacker: {fileID: 0}
+  dead_ppl: 0
 --- !u!4 &1552663856
 Transform:
   m_ObjectHideFlags: 0
