@@ -465,7 +465,7 @@ MonoBehaviour:
       m_Calls: []
   pID: 0
   max_health: 50
-  dmg_gold: 0
+  dmg_gold: 5
   death_gold: 0
   isCastle: 0
   healthMeshes:

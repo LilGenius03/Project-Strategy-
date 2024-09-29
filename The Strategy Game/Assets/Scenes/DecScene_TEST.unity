@@ -7230,7 +7230,31 @@ MonoBehaviour:
         m_CallState: 2
   OnCombatEnd:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 491882282}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1084933634}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnRoundOver:
     m_PersistentCalls:
       m_Calls:
@@ -21761,15 +21785,16 @@ MonoBehaviour:
   timerText: {fileID: 1213328951}
   countdownTime: 3
   prep_time: 15
-  combat_time: 60
+  combat_time: 120
   win_time: 15
   round_win_time: 4
   current_level: 0
   current_turn: 0
   current_round: 0
   max_rounds_needed: 3
-  p2_defending: 1
-  controller: {fileID: 0}
+  p2_defending: 0
+  p_attacker: {fileID: 0}
+  dead_ppl: 0
 --- !u!1 &1274357267
 GameObject:
   m_ObjectHideFlags: 0

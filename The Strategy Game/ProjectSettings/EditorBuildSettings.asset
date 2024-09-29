@@ -15,8 +15,8 @@ EditorBuildSettings:
     path: Assets/Scenes/DecScene_TwoLines.unity
     guid: ffe11f6bc224ae4419fe1b2a5bb3580a
   - enabled: 1
-    path: Assets/Scenes/OldScenes/DecScene_OLD.unity
-    guid: cacb0f4aef22adf419adbb922fbdbc31
+    path: Assets/Scenes/DecScene_TEST.unity
+    guid: c16a518233c58e948bb167bf59c42fb9
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

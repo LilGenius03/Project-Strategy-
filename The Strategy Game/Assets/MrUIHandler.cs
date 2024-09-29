@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class MrUIHandler : MonoBehaviour
 {
-    public UnityEvent OnGameBegin, OnRoundBegin, OnPrepBegin, OnPrepEnd, OnCombatBegin, OnCombatEnd;
+    public UnityEvent OnGameBegin, OnRoundBegin, OnTurnBegin, OnPrepBegin, OnPrepEnd, OnTurnEnd, OnCombatBegin, OnCombatEnd;
     public UnityWinnerEvent OnRoundOver, OnGameOver;
 
     [SerializeField] TextMeshProUGUI score_p1, score_p2;
@@ -14,10 +14,12 @@ public class MrUIHandler : MonoBehaviour
     {
         GameManager.OnGameBegin += Handle_GameBegin;
         GameManager.OnRoundBegin += Handle_RoundBegin;
+        GameManager.OnTurnBegin += Handle_TurnBegin;
         GameManager.OnPrepBegin += Handle_PrepBegin;
         GameManager.OnPrepOver += Handle_PrepOver;
         GameManager.OnCombatBegin += Handle_CombatBegin;
         GameManager.OnCombatOver += Handle_CombatOver;
+        GameManager.OnTurnOver += Handle_TurnOver;
         GameManager.OnRoundOver += Handle_RoundOver;
         GameManager.OnGameOver += Handle_GameOver;
     }
@@ -35,6 +37,11 @@ public class MrUIHandler : MonoBehaviour
     public void Handle_RoundBegin()
     {
         OnRoundBegin.Invoke();
+    }
+
+    public void Handle_TurnBegin()
+    {
+        OnTurnBegin.Invoke();
     }
 
     public void Handle_PrepBegin()
@@ -55,6 +62,11 @@ public class MrUIHandler : MonoBehaviour
     public void Handle_CombatOver()
     {
         OnCombatEnd.Invoke();
+    }
+
+    public void Handle_TurnOver()
+    {
+        OnTurnEnd.Invoke();
     }
 
     public void Handle_RoundOver(int winner)

@@ -94,6 +94,15 @@ public class PlayerManager : MonoBehaviour
         Debug.Log("Player " + id + " has joined");
     }
 
+    public void PayPlayers(int round_num)
+    {
+        PlayerController controller_p1 = players[0].GetComponent<PlayerController>();
+        PlayerController controller_p2 = players[1].GetComponent<PlayerController>();
+
+        controller_p1.AddGold(100 + (round_num * 20));
+        controller_p2.AddGold(100 + (round_num * 20));
+    }
+
     public void SetDefending(bool p2)
     {
         PlayerController controller_p1 = players[0].GetComponent<PlayerController>();
@@ -103,16 +112,11 @@ public class PlayerManager : MonoBehaviour
         {
             controller_p1.SwitchState(2);
             controller_p2.SwitchState(1);
-
-            controller_p2.AddGold(GameManager.instance.GoldToGive(true));
-            controller_p1.AddGold(GameManager.instance.GoldToGive(false));
         }
         else
         {
             controller_p2.SwitchState(2);
             controller_p1.SwitchState(1);
-            controller_p1.AddGold(GameManager.instance.GoldToGive(true));
-            controller_p2.AddGold(GameManager.instance.GoldToGive(false));
         }
     }
 }

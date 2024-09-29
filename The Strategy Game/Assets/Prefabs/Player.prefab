@@ -161,7 +161,8 @@ MonoBehaviour:
   attack_units_cost: 0a000000140000000f000000
   defend_units: 000000000000000000000000
   defend_units_cost: 140000001e00000019000000
-  gold: 50
+  gold: 0
+  total_men: 0
   my_ui: {fileID: 0}
 --- !u!1 &2511400329946415980
 GameObject:

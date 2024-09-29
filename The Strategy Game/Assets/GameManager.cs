@@ -30,6 +30,11 @@ public class GameManager : MonoBehaviour
     public delegate void PrepOver();
     public static event PrepOver OnPrepOver;
 
+    public delegate void TurnBegin();
+    public static event TurnBegin OnTurnBegin;
+    public delegate void TurnOver();
+    public static event TurnOver OnTurnOver;
+
     public delegate void RoundBegin();
     public static event RoundBegin OnRoundBegin;
     public delegate void RoundOver(int winner);
@@ -97,14 +102,6 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public int GoldToGive(bool isDefending)
-    {
-        if(isDefending)
-            return 10 * current_turn;
-        else
-            return 20 * current_turn;
-    }
-
     public void RanLevel()
     {
         int ran_lvl = Random.Range(1, 4);
@@ -124,7 +121,7 @@ public class GameManager : MonoBehaviour
     void SwitchSides()
     {
         p2_defending = !p2_defending;
-        StartCoroutine(Start_Round());
+        //StartCoroutine(Start_Round());
     }
 
     public void StartGame()
@@ -136,13 +133,28 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         OnGameBegin?.Invoke();
-        StartCoroutine(Start_Round());
+        Start_Round();
     }
 
-    IEnumerator Start_Round()
+    void Start_Round()
     {
         current_phase = GamePhases.round_begin;
+        dead_ppl = 0;
+
+        PlayerManager.instance.PayPlayers(current_round);
+
         current_round++;
+
+        OnFreezePlayers?.Invoke();
+        OnRoundBegin?.Invoke();
+        StartCoroutine(Start_Turn());
+    }
+
+    IEnumerator Start_Turn()
+    {
+        current_turn++;
+
+        dead_ppl = 0;
 
         OnFreezePlayers?.Invoke();
 
@@ -157,13 +169,12 @@ public class GameManager : MonoBehaviour
         {
             camera_p2.SetActive(false);
             camera_p1.SetActive(true);
+            PlayerManager.instance.SetDefending(false);
             p_attacker = PlayerManager.instance.players[1].GetComponent<PlayerController>();
         }
 
-        current_turn++;
-
         countdownText.gameObject.SetActive(true);
-        OnRoundBegin?.Invoke();
+        OnTurnBegin?.Invoke();
         countdownTime = 3f;
         while (countdownTime > 0)
         {
@@ -213,12 +224,8 @@ public class GameManager : MonoBehaviour
 
         countdownTime = combat_time;
         timerText.gameObject.SetActive(true);
-        //GameObject[] units = GameObject.FindGameObjectsWithTag("attack_unit");
         while (countdownTime > 3f)
         {
-            //units = GameObject.FindGameObjectsWithTag("attack_unit");
-            //Debug.Log(units.Length + " " + controller.HasPurMen());
-            Debug.Log("STIOLL RUNING");
             timerText.text = countdownTime.ToString();
             yield return new WaitForSecondsRealtime(1f);
             countdownTime--;
@@ -235,10 +242,7 @@ public class GameManager : MonoBehaviour
         countdownText.gameObject.SetActive(false);
         timerText.gameObject.SetActive(false);
         countdownTime = 3f;
-
-        OnCombatOver?.Invoke();
-        OnFreezePlayers?.Invoke();
-        SwitchSides();
+        StartCoroutine(End_Turn());
     }
 
     public void SomeoneDied()
@@ -246,11 +250,23 @@ public class GameManager : MonoBehaviour
         dead_ppl++;
         if(dead_ppl == p_attacker.total_men)
         {
-            StopCoroutine(combat_coroutine);
-            OnCombatOver?.Invoke();
-            OnFreezePlayers?.Invoke();
-            SwitchSides();
+            StartCoroutine(End_Turn());
         }
+    }
+
+    IEnumerator End_Turn()
+    {
+        StopCoroutine(combat_coroutine);
+        OnCombatOver?.Invoke();
+        OnFreezePlayers?.Invoke();
+        OnTurnOver?.Invoke();
+        yield return new WaitForSecondsRealtime(round_win_time);
+        SwitchSides();
+
+        if (current_turn % 2 == 0)
+            Start_Round();
+        else
+            StartCoroutine(Start_Turn());
     }
 
     public void CastleDestroyed(int winner)
