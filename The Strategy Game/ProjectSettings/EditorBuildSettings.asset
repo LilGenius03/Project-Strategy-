@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DecScene_TEST.unity
     guid: c16a518233c58e948bb167bf59c42fb9
+  - enabled: 1
+    path: Assets/Scenes/ShowCase.unity
+    guid: 1ddcd798f37fbd040bdf334e2cea4e16
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
