@@ -316,7 +316,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.2
-  m_Speed: 0.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -345,7 +345,7 @@ MonoBehaviour:
   current_target: {fileID: 0}
   castle: {fileID: 0}
   damage: 1
-  speed: 0.25
+  speed: 1
   rate_of_fire: 4
   fire_delay: 0
   attack_range: 3

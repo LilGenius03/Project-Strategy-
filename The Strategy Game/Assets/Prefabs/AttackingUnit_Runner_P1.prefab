@@ -303,7 +303,7 @@ MonoBehaviour:
   current_target: {fileID: 0}
   castle: {fileID: 0}
   damage: 1
-  speed: 2
+  speed: 5
   rate_of_fire: 2
   fire_delay: 0
   attack_range: 2
