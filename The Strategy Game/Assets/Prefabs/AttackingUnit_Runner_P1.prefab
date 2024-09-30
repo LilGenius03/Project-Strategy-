@@ -181,7 +181,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6478536213147159724, guid: 5d107758a71286c458171ef47caffaf3, type: 3}
+  - {fileID: 2100000, guid: eb106628c3cfa9540983d93c93b70078, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -346,7 +346,7 @@ MonoBehaviour:
   death_gold: 1
   isCastle: 0
   healthMeshes:
-  - {fileID: 0}
+  - {fileID: 6163149120066298800}
   healthColorGradient:
     serializedVersion: 2
     key0: {r: 0.32941177, g: 0.8901961, b: 1, a: 1}
