@@ -1,5 +1,5 @@
 using TMPro;
-using UnityEditor.VersionControl;
+//using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -141,6 +141,8 @@ public class PlayerController : MonoBehaviour
     public void LooseGold(int g)
     {
         gold-=g;
+        if (gold < 0)
+            gold = 0;
     }
     public void AddGold(int g)
     {

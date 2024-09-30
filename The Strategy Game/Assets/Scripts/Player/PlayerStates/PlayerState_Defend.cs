@@ -132,7 +132,7 @@ public class PlayerState_Defend : PlayerState_Base
 
                 if (controller.defend_units[0] > 0)
                 {
-                    if (controller.current_grid_space != null)
+                    if (controller.current_grid_space != null && controller.current_grid_space.type_of_space == 1)
                     {
                             controller.defend_units[0]--;
                             controller.defenseGrid.PlaceTower(controller.current_grid_space, controller.units.defensive_units[0], 1);
@@ -162,7 +162,7 @@ public class PlayerState_Defend : PlayerState_Base
 
                 if (controller.defend_units[1] > 0)
                 {
-                    if (controller.current_grid_space != null)
+                    if (controller.current_grid_space != null && controller.current_grid_space.type_of_space == 1)
                     {
                         controller.defend_units[1]--;
                         controller.defenseGrid.PlaceTower(controller.current_grid_space, controller.units.defensive_units[1], 1);
@@ -192,7 +192,7 @@ public class PlayerState_Defend : PlayerState_Base
 
                 if (controller.defend_units[2] > 0)
                 {
-                    if (controller.current_grid_space != null)
+                    if (controller.current_grid_space != null && controller.current_grid_space.type_of_space == 2)
                     {
                         controller.defend_units[2]--;
                         controller.defenseGrid.PlaceTower(controller.current_grid_space, controller.units.defensive_units[2], 2);

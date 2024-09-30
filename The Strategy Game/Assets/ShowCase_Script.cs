@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ShowCase_Script : MonoBehaviour
 {
@@ -26,7 +27,11 @@ public class ShowCase_Script : MonoBehaviour
             Text.SetActive(false);
         }
 
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+        }
+
         if (isControllingCamera)
         {
             if (Input.GetKeyDown(KeyCode.RightArrow))

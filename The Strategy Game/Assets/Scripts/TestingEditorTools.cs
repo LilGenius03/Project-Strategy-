@@ -1,11 +1,11 @@
 using UnityEditor;
-using UnityEditor.EditorTools;
-using UnityEditor.ShortcutManagement;
+//using UnityEditor.EditorTools;
+//using UnityEditor.ShortcutManagement;
 using UnityEngine;
 
 // Example MonoBehaviour that oscillates a transform position between two points.
 public class Platform : MonoBehaviour
-{
+{/*
     [SerializeField]
     Vector3 m_Start = new Vector3(-10, 0f, 0f);
 
@@ -147,4 +147,6 @@ class PlatformTool : EditorTool, IDrawSelectedHandles
                 Handles.DrawLine(platform.start, platform.end, 6f);
         }
     }
+}
+*/
 }

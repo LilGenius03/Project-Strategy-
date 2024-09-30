@@ -8,6 +8,8 @@ public class Health : MonoBehaviour
     PlayerController otherPlayer;
     public int pID;
 
+    [SerializeField] int dude_index;
+
     [SerializeField] float max_health = 10;
     private float current_health;
 
@@ -66,7 +68,8 @@ public class Health : MonoBehaviour
     {
         foreach (MeshRenderer mr in healthMeshes)
         {
-            mr.material.SetColor("_BaseColor", healthColorGradient.Evaluate((max_health - current_health) / max_health));
+            Material m = mr.materials[dude_index];
+                m.SetColor("_BaseColor", healthColorGradient.Evaluate((max_health - current_health) / max_health));
         }
     }
 }

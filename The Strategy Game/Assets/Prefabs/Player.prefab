@@ -158,7 +158,7 @@ MonoBehaviour:
   attackHelper: {fileID: 4638372164515308651}
   men: 0
   attack_units: 000000000000000000000000
-  attack_units_cost: 050000000a00000003000000
+  attack_units_cost: 050000001400000003000000
   defend_units: 000000000000000000000000
   defend_units_cost: 140000001e00000019000000
   gold: 0

@@ -346,7 +346,7 @@ MonoBehaviour:
   castle: {fileID: 0}
   damage: 1
   speed: 1
-  rate_of_fire: 4
+  rate_of_fire: 3
   fire_delay: 0
   attack_range: 3
 --- !u!114 &-5534224696020683872
@@ -383,9 +383,10 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   pID: 0
+  dude_index: 0
   max_health: 30
-  dmg_gold: 0
-  death_gold: 2
+  dmg_gold: 1
+  death_gold: 5
   isCastle: 0
   healthMeshes:
   - {fileID: 91604383632648675}
